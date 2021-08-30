@@ -1,0 +1,7 @@
+.main {
+   background-color: rgb(246, 213, 102);
+   grid-area: c;
+}
+.main img {
+   width: 100%;
+}
