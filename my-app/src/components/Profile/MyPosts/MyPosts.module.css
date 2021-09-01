@@ -1,0 +1,10 @@
+.active {
+   color: rgb(240, 12, 12);
+   font-weight: 600;
+}
+.item {
+   padding: 5px;
+}
+.item img {
+   width: 90px;
+}
