@@ -3,7 +3,7 @@ html {
   margin: 0;
   padding: 0;
 }
-.App {
+.AppWrapper {
   max-width: 1170px;
   margin: 0 auto;
   display: grid;
