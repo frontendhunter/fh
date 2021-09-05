@@ -13,3 +13,8 @@ html {
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
 }
+.contentWrapper{
+  background-color: rgb(246, 213, 102);
+  grid-area: c;
+  padding: 10px;
+}
