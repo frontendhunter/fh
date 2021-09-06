@@ -6,12 +6,15 @@
 .dialog__item{
     padding: 10px;
     border-bottom: 1px solid lightslategray;
+    display:  block;
+    color: black;
+    text-decoration: none;
 }
 .dialog__item.active{
     color: crimson;
     font-weight: bolder;
 }
 .messages__item{
-    padding: 20px;
+    padding: 15px;
 
 }
