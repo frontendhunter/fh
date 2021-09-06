@@ -1,0 +1,17 @@
+.dialogs__wrap{
+ display: grid;
+    grid-template-columns: 2fr 10fr;
+
+}
+.dialog__item{
+    padding: 10px;
+    border-bottom: 1px solid lightslategray;
+}
+.dialog__item.active{
+    color: crimson;
+    font-weight: bolder;
+}
+.messages__item{
+    padding: 20px;
+
+}
