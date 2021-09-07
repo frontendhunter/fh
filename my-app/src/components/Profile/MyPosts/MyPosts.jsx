@@ -2,6 +2,10 @@ import React from "react"
 import s from './MyPosts.module.css'
 import Post from "./Post/Post"
 
+let postsData = [
+    {id:1, name: 'Joseph', message: 'smth clever text', likesCount: 12},
+]
+
 const MyPosts = () => {
     return (
         <div className={s.MyPosts}>
@@ -13,8 +17,8 @@ const MyPosts = () => {
                 </div>
             </form>
 
-            <Post message='I am hangry' likesCount='12'/>
-            <Post name="pie" message="hy, it's my first post)" likesCount='34'/>
+            <Post name={postsData[0].name} message={postsData[0].message} likesCount={postsData[0].likesCount}/>
+
         </div>
     )
 }
