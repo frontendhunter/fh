@@ -2,29 +2,38 @@ import React from "react"
 import s from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
 
+
+let Dialog__item = (props) => {
+    return (
+        <div>
+            <NavLink to={"/dialogs/" + props.id} className={s.dialog__item}
+                     activeClassName={s.active}>{props.name}</NavLink>
+        </div>
+    )
+}
+let Message = (props) => {
+    return(
+            <div className={s.messages__item}>
+                {props.message}
+            </div>
+    )
+}
 const Dialogs = () => {
     return (
         <div className={s.dialogs__wrap}>
             <div className={s.dialogs}>
-                <NavLink to="/dialogs/1" className={s.dialog__item}> Erjan</NavLink>
-                <NavLink to="/dialogs/2" className={s.dialog__item}>Chuhan</NavLink>
-                <NavLink to="/dialogs/3" className={s.dialog__item + ' ' + s.active}>Dushnila</NavLink>
-                <NavLink to="/dialogs/4" className={s.dialog__item}>uRina</NavLink>
+                <Dialog__item id='1' name='Erjaaan'/>
+                <Dialog__item id='2' name='BushGirl'/>
+                <Dialog__item id='3' name='uRina'/>
+                <Dialog__item id='4' name='Dushnila'/>
 
             </div>
             <div className={s.messages}>
-                <div className={s.messages__item}>
-                    hey, bro) What you doing today?
-                </div>
-                <div className={s.messages__item}>
-                    nothing
-                </div>
-                <div className={s.messages__item}>
-                    mb wolk?
-                </div>
-                <div className={s.messages__item}>
-                    No!
-                </div>
+                <Message message="hey, bro) What you doing today?"/>
+                <Message message="nothing"/>
+                <Message message=" mb wolk?"/>
+                <Message message="No!"/>
+
             </div>
         </div>
 
