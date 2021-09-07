@@ -16,5 +16,4 @@ html {
 .contentWrapper{
   background-color: rgb(246, 213, 102);
   grid-area: c;
-  padding: 10px;
 }
