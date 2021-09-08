@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import DialogItem from "./components/Dialogs/DialogItem/DialogsItem";
+import Message from "./components/Dialogs/Message/Message";
+
+
 
 ReactDOM.render(
   <React.StrictMode>
