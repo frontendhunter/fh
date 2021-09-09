@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import DialogItem from "./components/Dialogs/DialogItem/DialogsItem";
-import Message from "./components/Dialogs/Message/Message";
+import state from './redux/state.js';
 
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App state={state}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

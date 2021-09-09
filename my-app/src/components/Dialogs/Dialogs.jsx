@@ -6,13 +6,18 @@ import Message from "./Message/Message";
 
 
 const Dialogs = (props) => {
+
+    let dialogsElements = props.state.dialogs.map(d => <DialogItem id={d.id} name={d.name} img={d.img}/>)
+
+    let messagesElements= props.state.messages.map(m=><Message message={m.message}/>)
+
     return (
         <div className={s.dialogs__wrap}>
             <div className={s.dialogs}>
-                {props.dialogsElements}
+                {dialogsElements}
             </div>
             <div className={s.messages}>
-                {props.messagesElements}
+                {messagesElements}
             </div>
         </div>
 

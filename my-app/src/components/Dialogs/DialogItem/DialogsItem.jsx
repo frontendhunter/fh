@@ -7,7 +7,7 @@ let DialogItem = (props) => {
     return (
         <div>
             <NavLink to={"/dialogs/" + props.id} className={s.dialog__item}
-                     activeClassName={s.active}>{props.name}</NavLink>
+                     activeClassName={s.active}>{props.name}<img src={props.img}/></NavLink>
         </div>
     )
 }

@@ -2,9 +2,10 @@ import React from "react"
 import s from './MyPosts.module.css'
 import Post from "./Post/Post"
 
-
-
 const MyPosts = (props) => {
+
+    let postsElement = props.posts.map(posts =>  <Post name={posts.name} message={posts.message} likesCount={posts.likesCount}/>)
+
     return (
         <div className={s.MyPosts}>
             <h3> My posts:</h3>
@@ -15,7 +16,7 @@ const MyPosts = (props) => {
                 </div>
             </form>
 
-            {props.postsElement}
+            {postsElement}
 
         </div>
     )
