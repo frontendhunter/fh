@@ -24,3 +24,8 @@
     padding: 15px;
 
 }
+.messages__item img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}

@@ -9,7 +9,7 @@ const Dialogs = (props) => {
 
     let dialogsElements = props.state.dialogs.map(d => <DialogItem id={d.id} name={d.name} img={d.img}/>)
 
-    let messagesElements= props.state.messages.map(m=><Message message={m.message}/>)
+    let messagesElements= props.state.messages.map(m=><Message class={m.class} message={m.message} name={m.name} img={m.img}/>)
 
     return (
         <div className={s.dialogs__wrap}>

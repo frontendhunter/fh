@@ -8,10 +8,10 @@ let state = {
                     {id:4, name:'Dushnila',img:'https://media.professionali.ru/processor/topics/size5/2017/03/21/brodude-ru-8-06-2015-f2ecjf7krnt7z.jpg'},
         ],
         messages: [
-            {id:1, message:'hy'},
-            {id:2, message:'sosi jopu'},
-            {id:3, message:'pisia popa pisia popa pisia popa pisia popa pisia popa  '},
-            {id:4, message:'popa pisia popa pisia popa pisia'}
+            {id:1, name:'BrushGirl', img:'https://ru-minecraft.ru/uploads/posts/2018-02/1519154980_mad-villagers.png', message:'hello'},
+            {id:2, name:'me', class:'textAlign: right;' ,img:'https://pbs.twimg.com/profile_images/1412450786542379011/IY6aPa50.png', message:'sosi jopu'},
+            {id:3, name:'me', class:'textAlign: right; ' ,img:'https://pbs.twimg.com/profile_images/1412450786542379011/IY6aPa50.png', message:'pisia popa pisia popa pisia popa pisia popa pisia popa  '},
+            {id:4,  name:'BrushGirl', img:'https://ru-minecraft.ru/uploads/posts/2018-02/1519154980_mad-villagers.png', message:'popa pisia popa pisia popa pisia'}
         ],
     },
     profilePage:{
