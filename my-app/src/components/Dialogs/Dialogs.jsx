@@ -14,7 +14,6 @@ const Dialogs = (props) => {
     let newMessage = React.createRef();
 
     let showMessage = () =>{
-        debugger;
         alert(newMessage.current.value)
     }
 
