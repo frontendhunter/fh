@@ -1,10 +1,11 @@
 import React from "react"
 import s from './../Dialogs.module.css'
-import {NavLink} from "react-router-dom";
-
 
 
 let Message = (props) => {
+
+
+
     return(
         <div >
 
@@ -12,6 +13,7 @@ let Message = (props) => {
                 <p><b>{props.name}</b></p>
                 <img src={props.img}/>  {props.message}
             </div>
+
         </div>
 
     )

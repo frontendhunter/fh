@@ -11,6 +11,13 @@ const Dialogs = (props) => {
 
     let messagesElements= props.state.messages.map(m=><Message class={m.class} message={m.message} name={m.name} img={m.img}/>)
 
+    let newMessage = React.createRef();
+
+    let showMessage = () =>{
+        debugger;
+        alert(newMessage.current.value)
+    }
+
     return (
         <div className={s.dialogs__wrap}>
             <div className={s.dialogs}>
@@ -18,6 +25,10 @@ const Dialogs = (props) => {
             </div>
             <div className={s.messages}>
                 {messagesElements}
+                <form>
+                    <textarea ref={newMessage}></textarea>
+                    <div><button onClick={showMessage}>show message</button></div>
+                </form>
             </div>
         </div>
 
