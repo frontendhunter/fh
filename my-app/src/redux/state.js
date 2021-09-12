@@ -1,4 +1,5 @@
-import {renderEntireTree} from "../render";
+let rerenderEntireTree = () =>{
+}
 
 let state = {
     dialogsPage: {
@@ -48,6 +49,7 @@ let state = {
                 message: 'popa pisia popa pisia popa pisia'
             }
         ],
+        newMessageText: 'Hello',
     },
     profilePage: {
         posts: [
@@ -75,7 +77,7 @@ let state = {
 }
 
 
-export let addPost = () => {
+export const addPost = () => {
     let newPost = {
         id: 5,
         name: 'someth',
@@ -83,11 +85,33 @@ export let addPost = () => {
         likesCount: 0,
     };
     state.profilePage.posts.push(newPost);
-    renderEntireTree(state);
+    rerenderEntireTree(state);
     postChange('');
 }
-export let postChange = (value) => {
+export const postChange = (value) => {
     state.profilePage.newPostText = value ;
-    renderEntireTree(state);
+    rerenderEntireTree(state);
 }
+
+export const addMessage = () => {
+    let newMessage ={
+        id: 5,
+        name: 'me',
+        img: 'https://pbs.twimg.com/profile_images/1412450786542379011/IY6aPa50.png',
+        message: state.dialogsPage.newMessageText,
+    }
+    state.dialogsPage.messages.push(newMessage);
+    rerenderEntireTree(state);
+     messageChange('');
+}
+export const messageChange = (value) => {
+    state.dialogsPage.newMessageText = value ;
+    rerenderEntireTree(state);
+}
+
+export const subscribe =(observer) => {
+    rerenderEntireTree = observer;
+}
+
+
 export default state;
