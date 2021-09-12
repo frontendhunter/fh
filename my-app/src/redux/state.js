@@ -53,7 +53,8 @@ let state = {
         posts: [
             {id: 1, name: 'Joseph', message: 'smth clever text', likesCount: 16},
             {id: 2, name: 'Isaac', message: 'smth clever text about life', likesCount: 39}
-        ]
+        ],
+        newPostText: 'sicialInvest',
     },
     sideBar: {
         friends: [
@@ -74,14 +75,19 @@ let state = {
 }
 
 
-export let addPost = (value) => {
+export let addPost = () => {
     let newPost = {
         id: 5,
         name: 'someth',
-        message: value,
+        message: state.profilePage.newPostText,
         likesCount: 0,
     };
     state.profilePage.posts.push(newPost);
+    renderEntireTree(state);
+    postChange('');
+}
+export let postChange = (value) => {
+    state.profilePage.newPostText = value ;
     renderEntireTree(state);
 }
 export default state;
