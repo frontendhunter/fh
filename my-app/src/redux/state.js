@@ -1,4 +1,3 @@
-
 let store = {
     _state: {
         dialogsPage: {
@@ -74,23 +73,11 @@ let store = {
         },
 
     },
-    addPost(){
-        let newPost = {
-            id: 5,
-            name: 'someth',
-            message: this._state.profilePage.newPostText,
-            likesCount: 0,
-        };
-        this._state.profilePage.posts.push(newPost);
-        this._callSubscriber(this._state);
-        this.postChange('');
+    _callSubscriber() {
     },
-    postChange(value){
-        this._state.profilePage.newPostText = value ;
-        this._callSubscriber(this._state);
-    },
-    addMessage(){
-        let newMessage ={
+
+    addMessage() {
+        let newMessage = {
             id: 5,
             name: 'me',
             img: 'https://pbs.twimg.com/profile_images/1412450786542379011/IY6aPa50.png',
@@ -100,20 +87,34 @@ let store = {
         this._callSubscriber(this._state);
         this.messageChange('');
     },
-    messageChange(value){
-        this._state.dialogsPage.newMessageText = value ;
+    messageChange(value) {
+        this._state.dialogsPage.newMessageText = value;
         this._callSubscriber(this._state);
     },
-    _callSubscriber(){
-    },
-    subscribe(observer){
+
+    subscribe(observer) {
         this._callSubscriber = observer;
     },
-    getState(){
+    getState() {
         return this._state;
+    },
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 5,
+                name: 'someth',
+                message: this._state.profilePage.newPostText,
+                likesCount: 0,
+            };
+            this._state.profilePage.posts.push(newPost);
+            this._callSubscriber(this._state);
+            this.dispatch({type: 'POST-CHANGE', newText: ''});
+        } else if (action.type === 'POST-CHANGE') {
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        }
     }
 }
-
-
 
 export default store;

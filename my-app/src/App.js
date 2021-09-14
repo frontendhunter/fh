@@ -20,8 +20,7 @@ const App = (props) => {
                 {/*                              messageChange={props.messageChange}/>}/>*/}
                 <Route path="/profile"
                        render={() => <Profile profilePage={props.state.profilePage}
-                                              addPost={props.addPost}
-                                              postChange={props.postChange}/>}/>
+                                              dispatch={props.dispatch}/>}/>
             </div>
 
         </div>
