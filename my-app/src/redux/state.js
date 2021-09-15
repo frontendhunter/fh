@@ -1,3 +1,6 @@
+const ADD_POST = 'ADD-POST';
+const POST_CHANGE = 'POST-CHANGE';
+
 let store = {
     _state: {
         dialogsPage: {
@@ -116,5 +119,6 @@ let store = {
         }
     }
 }
-
+export const addPostActionCreator = () => ({type: ADD_POST});
+export const onPostChangeActionCreator = (text) => ({type: POST_CHANGE, newText: text});
 export default store;
