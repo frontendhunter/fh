@@ -1,5 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const POST_CHANGE = 'POST-CHANGE';
+const  ADD_MESSAGE = 'ADD-MESSAGE';
+const MESSAGE_CHANGE = 'MESSAGE-CHANGE';
 
 let store = {
     _state: {
@@ -116,9 +118,27 @@ let store = {
         } else if (action.type === 'POST-CHANGE') {
             this._state.profilePage.newPostText = action.newText;
             this._callSubscriber(this._state);
+        } else if (action.type === ADD_MESSAGE) {
+            let newMessage = {
+                id: 5,
+                name: 'me',
+                img: 'https://pbs.twimg.com/profile_images/1412450786542379011/IY6aPa50.png',
+                message: this._state.dialogsPage.newMessageText,
+            }
+            this._state.dialogsPage.messages.push(newMessage);
+            this._callSubscriber(this._state);
+            this.dispatch({type:  MESSAGE_CHANGE, text: ''});
+        }else if(action.type === MESSAGE_CHANGE){
+
+            this._state.dialogsPage.newMessageText = action.text;
+            this._callSubscriber(this._state)
         }
+
     }
 }
 export const addPostActionCreator = () => ({type: ADD_POST});
 export const onPostChangeActionCreator = (text) => ({type: POST_CHANGE, newText: text});
+export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
+export const onMessageChangeActionCreator = (txt) => ({type:MESSAGE_CHANGE,text:txt});
+
 export default store;
