@@ -1,3 +1,6 @@
+import dialogsReducer from "./dialogs-reducer";
+import profileReducer from "./profile-reducer";
+
 const ADD_POST = 'ADD-POST';
 const POST_CHANGE = 'POST-CHANGE';
 const  ADD_MESSAGE = 'ADD-MESSAGE';
@@ -105,40 +108,13 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 5,
-                name: 'someth',
-                message: this._state.profilePage.newPostText,
-                likesCount: 0,
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._callSubscriber(this._state);
-            this.dispatch({type: 'POST-CHANGE', newText: ''});
-        } else if (action.type === 'POST-CHANGE') {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state);
-        } else if (action.type === ADD_MESSAGE) {
-            let newMessage = {
-                id: 5,
-                name: 'me',
-                img: 'https://pbs.twimg.com/profile_images/1412450786542379011/IY6aPa50.png',
-                message: this._state.dialogsPage.newMessageText,
-            }
-            this._state.dialogsPage.messages.push(newMessage);
-            this._callSubscriber(this._state);
-            this.dispatch({type:  MESSAGE_CHANGE, text: ''});
-        }else if(action.type === MESSAGE_CHANGE){
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage,action);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
 
-            this._state.dialogsPage.newMessageText = action.text;
-            this._callSubscriber(this._state)
-        }
+        this._callSubscriber(this.state)
 
     }
 }
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const onPostChangeActionCreator = (text) => ({type: POST_CHANGE, newText: text});
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
-export const onMessageChangeActionCreator = (txt) => ({type:MESSAGE_CHANGE,text:txt});
+
 
 export default store;
