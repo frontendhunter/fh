@@ -3,8 +3,8 @@ import React from 'react'
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import Profile from './components/Profile/Profile';
-import Dialogs from "./components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
 const App = (props) => {
@@ -12,14 +12,18 @@ const App = (props) => {
 
         <div className="AppWrapper">
             <Header/>
-            <Sidebar state={props.state.sideBar}/>
+            <Sidebar store={props.store}/>
             <div className='contentWrapper'>
                 <Route path="/dialogs"
-                       render={() => <Dialogs state={props.state}
-                                              dispatch={props.dispatch}/>}/>
+                       render={() => <DialogsContainer store={props.store}
+                                              // dispatch={props.store.dispatch.bind()}
+                       />}
+                />
                 <Route path="/profile"
-                       render={() => <Profile profilePage={props.state.profilePage}
-                                              dispatch={props.dispatch}/>}/>
+                       render={() => <Profile store={props.store}
+                           // profilePage={props.state.profilePage}
+                           //                    dispatch={props.dispatch}
+                       />}/>
             </div>
 
         </div>

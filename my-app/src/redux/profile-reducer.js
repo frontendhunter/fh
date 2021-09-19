@@ -6,20 +6,20 @@ let initialState = {
         {id: 1, name: 'Joseph', message: 'smth clever text', likesCount: 16},
         {id: 2, name: 'Isaac', message: 'smth clever text about life', likesCount: 39}
     ],
-        newPostText: 'sicialInvest',
+    newPostText: 'sicialInvest',
 }
-const profileReducer = (state = initialState, action)=>{
-    debugger;
+const profileReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case ADD_POST:
-            state.posts.push({id:5,name: 'smth', message: state.newPostText, likesCount: 0})
+            state.posts.push({id: 5, name: 'smth', message: state.newPostText, likesCount: 0})
             state.newPostText = '';
             return state;
         case POST_CHANGE:
             state.newPostText = action.newText;
             return state;
         default:
-            return  state;
+            return state;
 
     }
 }

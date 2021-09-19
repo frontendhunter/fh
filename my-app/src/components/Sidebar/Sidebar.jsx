@@ -2,7 +2,9 @@ import React from "react"
 import s from './Sidebar.module.css'
 import {NavLink} from "react-router-dom";
 
-const Sidebar = (props) => { 
+const Sidebar = (props) => {
+    let state  = props.store.getState();
+
     return (
         <div className={s.sideBar}>
             <nav className={s.nav}>
@@ -13,16 +15,16 @@ const Sidebar = (props) => {
             </nav>
             <div className={s.friends}>
                 <div className={s.friend}>
-                    <img src={props.state.friends[0].img}/>
-                    <span>{props.state.friends[0].name}</span>
+                    <img src={state.sideBar.friends[0].img}/>
+                    <span>{state.sideBar.friends[0].name}</span>
                 </div>
                 <div className={s.friend}>
-                    <img src={props.state.friends[1].img}/>
-                    <span>{props.state.friends[1].name}</span>
+                    <img src={state.sideBar.friends[1].img}/>
+                    <span>{state.sideBar.friends[1].name}</span>
                 </div>
                 <div className={s.friend}>
-                    <img src={props.state.friends[2].img}/>
-                    <span>{props.state.friends[2].name}</span>
+                    <img src={state.sideBar.friends[2].img}/>
+                    <span>{state.sideBar.friends[2].name}</span>
                 </div>
             </div>
         </div>
