@@ -1,10 +1,6 @@
 import dialogsReducer from "./dialogs-reducer";
 import profileReducer from "./profile-reducer";
 
-const ADD_POST = 'ADD-POST';
-const POST_CHANGE = 'POST-CHANGE';
-const  ADD_MESSAGE = 'ADD-MESSAGE';
-const MESSAGE_CHANGE = 'MESSAGE-CHANGE';
 
 let store = {
     _state: {
@@ -84,22 +80,6 @@ let store = {
     _callSubscriber() {
     },
 
-    addMessage() {
-        let newMessage = {
-            id: 5,
-            name: 'me',
-            img: 'https://pbs.twimg.com/profile_images/1412450786542379011/IY6aPa50.png',
-            message: this._state.dialogsPage.newMessageText,
-        }
-        this._state.dialogsPage.messages.push(newMessage);
-        this._callSubscriber(this._state);
-        this.messageChange('');
-    },
-    messageChange(value) {
-        this._state.dialogsPage.newMessageText = value;
-        this._callSubscriber(this._state);
-    },
-
     subscribe(observer) {
         this._callSubscriber = observer;
     },
@@ -108,13 +88,11 @@ let store = {
     },
 
     dispatch(action) {
-        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage,action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
         this._state.profilePage = profileReducer(this._state.profilePage, action);
 
         this._callSubscriber(this.state)
 
     }
 }
-
-
 export default store;

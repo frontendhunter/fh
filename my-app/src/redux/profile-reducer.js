@@ -1,8 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const POST_CHANGE = 'POST-CHANGE';
 
-let profileReducer = (state, action)=>{
-    debugger
+const profileReducer = (state, action)=>{
     switch (action.type) {
         case ADD_POST:
             state.posts.push({id:5,name: 'smth', message: state.newPostText, likesCount: 0})

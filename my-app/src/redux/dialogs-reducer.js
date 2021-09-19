@@ -1,8 +1,8 @@
 const  ADD_MESSAGE = 'ADD-MESSAGE';
 const MESSAGE_CHANGE = 'MESSAGE-CHANGE';
 
-let dialogsReducer = (state, action)=>{
-    debugger
+const dialogsReducer = (state, action)=>{
+
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage = {
