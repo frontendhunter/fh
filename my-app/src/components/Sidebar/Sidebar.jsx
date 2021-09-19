@@ -3,7 +3,7 @@ import s from './Sidebar.module.css'
 import {NavLink} from "react-router-dom";
 
 const Sidebar = (props) => {
-    let state  = props.store.getState();
+    // let state  = props.store.getState();
 
     return (
         <div className={s.sideBar}>
@@ -13,20 +13,20 @@ const Sidebar = (props) => {
                 <NavLink to="/news" className={s.item} activeClassName={s.active}>News</NavLink>
                 <NavLink to="/settings" className={s.item} activeClassName={s.active}>Settings</NavLink>
             </nav>
-            <div className={s.friends}>
-                <div className={s.friend}>
-                    <img src={state.sideBar.friends[0].img}/>
-                    <span>{state.sideBar.friends[0].name}</span>
-                </div>
-                <div className={s.friend}>
-                    <img src={state.sideBar.friends[1].img}/>
-                    <span>{state.sideBar.friends[1].name}</span>
-                </div>
-                <div className={s.friend}>
-                    <img src={state.sideBar.friends[2].img}/>
-                    <span>{state.sideBar.friends[2].name}</span>
-                </div>
-            </div>
+            {/*<div className={s.friends}>*/}
+            {/*    <div className={s.friend}>*/}
+            {/*        <img src={state.sideBar.friends[0].img}/>*/}
+            {/*        <span>{state.sideBar.friends[0].name}</span>*/}
+            {/*    </div>*/}
+            {/*    <div className={s.friend}>*/}
+            {/*        <img src={state.sideBar.friends[1].img}/>*/}
+            {/*        <span>{state.sideBar.friends[1].name}</span>*/}
+            {/*    </div>*/}
+            {/*    <div className={s.friend}>*/}
+            {/*        <img src={state.sideBar.friends[2].img}/>*/}
+            {/*        <span>{state.sideBar.friends[2].name}</span>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </div>
     )
 }

@@ -4,42 +4,41 @@ import DialogItem from "./DialogItem/DialogsItem";
 import Message from "./Message/Message";
 import {addMessageActionCreator, onMessageChangeActionCreator} from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
+import {connect} from "react-redux";
+
+//
+// const DialogsContainer = (props) => {
+//     debugger
+//     let state = props.store.getState();
+//     let newMessageText = state.dialogsPage.newMessageText;
+//     let messageChange = (txt) => {
+//         props.store.dispatch(onMessageChangeActionCreator(txt))
+//     }
+//     let addMessage = () => {
+//         props.store.dispatch(addMessageActionCreator())
+//     }
+//
+//     return <Dialogs state={state} newMessageText={newMessageText} addMessage={addMessage}
+//                     messageChange={messageChange}/>
+// }
 
 
-const DialogsContainer = (props) => {
-    debugger
-    let state = props.store.getState() ;
-    let newMessageText = state.dialogsPage.newMessageText;
-    //
-    // let dialogsElements = props.state.dialogsPage.dialogs.map(d => <DialogItem id={d.id} name={d.name} img={d.img}/>)
-    //
-    // let messagesElements = props.state.dialogsPage.messages.map(m => <Message class={m.class} message={m.message}
-    //                                                                           name={m.name}
-    //                                                                           img={m.img}/>)
-
-    let messageChange = (txt) => {
-        props.store.dispatch(onMessageChangeActionCreator(txt))
+let mapStateToProps = (state) => {
+    return {
+        dialogsPage: state.dialogsPage,
+        newMessageText: state.dialogsPage.newMessageText
     }
-    let addMessage = () => {
-        props.store.dispatch(addMessageActionCreator())
+};
+let mapDispatchToProps = (dispatch) => {
+    return {
+        messageChange: (txt) => {
+            dispatch(onMessageChangeActionCreator(txt))
+        },
+        addMessage: () => {
+            dispatch(addMessageActionCreator())
+        }
+
     }
-
-    return <Dialogs state={state} newMessageText={newMessageText} addMessage={addMessage} messageChange={messageChange}/>
-        // <div className={s.dialogs__wrap}>
-        //     <div className={s.dialogs}>
-        //         {dialogsElements}
-        //     </div>
-        //     <div className={s.messages}>
-        //         {messagesElements}
-        //         <div>
-        //             <textarea onChange={onMessageChange} ref={newMessage}
-        //                       value={newMessageText}></textarea>
-        //             <div>
-        //                 <button onClick={addMessage}>add message</button>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div>
-
-}
+};
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 export default DialogsContainer;
