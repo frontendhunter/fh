@@ -1,4 +1,4 @@
-const  ADD_MESSAGE = 'ADD-MESSAGE';
+const ADD_MESSAGE = 'ADD-MESSAGE';
 const MESSAGE_CHANGE = 'MESSAGE-CHANGE';
 
 let initialState = {
@@ -20,7 +20,7 @@ let initialState = {
             img: 'https://media.professionali.ru/processor/topics/size5/2017/03/21/brodude-ru-8-06-2015-f2ecjf7krnt7z.jpg'
         },
     ],
-        messages: [
+    messages: [
         {
             id: 1,
             name: 'BrushGirl',
@@ -48,25 +48,27 @@ let initialState = {
             message: 'popa pisia popa pisia popa pisia'
         }
     ],
-        newMessageText: 'Hello',
+    newMessageText: 'Hello',
 };
 
-const dialogsReducer = (state = initialState, action)=>{
+const dialogsReducer = (state = initialState, action) => {
+    let stateCopy;
 
     switch (action.type) {
         case ADD_MESSAGE:
-            let newMessage = {
-                id: 5,
-                name: 'me',
-                img: 'https://pbs.twimg.com/profile_images/1412450786542379011/IY6aPa50.png',
-                message:  state.newMessageText,
+            let body = state.newMessageText;
+            stateCopy = {
+                ...state,
+                messages: [...state.messages,{id: 5,name: 'me',img: 'https://pbs.twimg.com/profile_images/1412450786542379011/IY6aPa50.png', message: body}],
+                newMessageText: ''
             }
-            state.messages.push(newMessage);
-            state.newMessageText='';
-            return state;
+            return stateCopy;
         case MESSAGE_CHANGE:
-            state.newMessageText = action.text;
-            return state;
+            stateCopy = {
+                ...state,
+                newMessageText: action.text
+            }
+            return stateCopy;
         default:
             return state;
 
@@ -74,6 +76,6 @@ const dialogsReducer = (state = initialState, action)=>{
 }
 
 export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
-export const onMessageChangeActionCreator = (txt) => ({type:MESSAGE_CHANGE,text:txt});
+export const onMessageChangeActionCreator = (txt) => ({type: MESSAGE_CHANGE, text: txt});
 
 export default dialogsReducer;
