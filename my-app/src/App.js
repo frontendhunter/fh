@@ -3,9 +3,9 @@ import React from 'react'
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import Profile from './components/Profile/Profile';
-import {Route} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import Users from "./components/Users/Users";
+import UsersContainer from "./components/Users/UsersContainer";
 
 
 const App = (props) => {
@@ -15,9 +15,9 @@ const App = (props) => {
             <Header/>
             <Sidebar store={props.store}/>
             <div className='contentWrapper'>
-                <Route path="/dialogs" render={() => <DialogsContainer store={props.store}/>}/>
-                <Route path="/profile" render={() => <Profile store={props.store}/>}/>
-                <Route path="/users" render={() => <Users/>}/>
+                <Route path="/dialogs" render={() => <DialogsContainer />}/>
+                <Route path="/profile" render={() => <Profile />}/>
+                <Route path="/users" render={() => <UsersContainer />}/>
             </div>
 
         </div>

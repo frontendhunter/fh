@@ -1,3 +1,28 @@
-.all{
-    text-align: center;
+.userContainer{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+}
+.discription{
+    position: relative;
+    width: 79%;
+}
+.image_wrap{
+    width: 19.9%;
+}
+.name{
+    font-weight: bolder;
+    color: crimson;
+    text-align: right;
+    font-size: 1.1em;
+
+}
+.discription span{
+    display: block;
+}
+.image_wrap img{
+    width: 150px;
+    height: 150px;
 }
