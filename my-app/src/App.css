@@ -14,6 +14,6 @@ html {
   grid-template-columns: 2fr 10fr;
 }
 .contentWrapper{
-  background-color: rgb(246, 213, 102);
+  background-color: rgba(246, 213, 102,0.1);
   grid-area: c;
 }
