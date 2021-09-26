@@ -29,3 +29,11 @@
     width: 150px;
     height: 150px;
 }
+.pages {
+    cursor: pointer;
+    font-size: 1.2em;
+}
+.currentPage{
+    color: crimson;
+    font-weight: bolder ;
+}
