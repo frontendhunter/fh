@@ -26,8 +26,17 @@
     display: block;
 }
 .image_wrap img{
-    width: 150px;
-    height: 150px;
+    width: 125px;
+    height: 125px;
+}
+.image_wrap button{
+    width: 125px;
+    background-color: rgba(220,20,60,0.9);
+    font-size: 15px;
+    padding: 0.1em;
+    color: white;
+    border: none;
+
 }
 .pages {
     cursor: pointer;
