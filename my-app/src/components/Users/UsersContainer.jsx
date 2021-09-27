@@ -1,7 +1,7 @@
 import React from 'react'
 import {
-    currentPage,
     follow,
+    setCurrentPage,
     setTotalUsersCount,
     setUsers,
     toggleIsFetching,
@@ -85,7 +85,7 @@ export default connect(mapStateToProps, {
     follow,
     unfollow,
     setUsers,
-    setCurrentPage:currentPage,
+    setCurrentPage,
     setTotalUsersCount,
     toggleIsFetching ,
 
