@@ -22,7 +22,7 @@ const Users = (props) => {
             props.users.map(u => <div key={u.id}>
                 <div className={s.userContainer}>
                     <div className={s.image_wrap}>
-                        <NavLink to="/Profile">
+                        <NavLink to={`/Profile/${u.id}`}>
                             <img src={u.photos.small === null ? defaultImage : u.photos.small}/>
                         </NavLink>
                         {u.followed ?

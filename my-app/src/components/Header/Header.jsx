@@ -7,6 +7,7 @@ const Header = () => {
          <div className={s.logo}>
             <h2 className={s.logo__txt}>Simple Invest</h2>
          </div>
+          <div className={s.login}>sad</div>
       </header>
    )
 }
