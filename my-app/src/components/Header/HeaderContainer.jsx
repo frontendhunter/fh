@@ -1,6 +1,4 @@
-import React from "react"
-import s from './Header.module.css'
-import {NavLink} from "react-router-dom";
+import React from "react";
 import Header from "./Header";
 import {connect} from "react-redux";
 import * as axios from "axios";

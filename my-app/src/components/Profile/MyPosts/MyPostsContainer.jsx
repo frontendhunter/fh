@@ -3,7 +3,6 @@ import {addPostActionCreator, onPostChangeActionCreator} from "../../../redux/pr
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
 
-// }
 let mapStateToProps = (state) => {
     return {
         posts: state.profilePage.posts,

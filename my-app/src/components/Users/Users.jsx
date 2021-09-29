@@ -2,6 +2,7 @@ import React from "react";
 import s from './Users.module.css'
 import defaultImage from '../../assets/images/defaultProfileImage.png'
 import {NavLink} from "react-router-dom";
+import * as axios from "axios";
 
 
 const Users = (props) => {
@@ -26,20 +27,50 @@ const Users = (props) => {
                             <img src={u.photos.small === null ? defaultImage : u.photos.small}/>
                         </NavLink>
                         {u.followed ?
-                            <button onClick={() => props.unfollow(u.id)}>Unfollow</button> :
-                            <button onClick={() => props.follow(u.id)}>Follow</button>
-                        }
-                    </div>
-                    <div className={s.discription}>
-                        <span className={s.name}>{u.name}</span>
-                        <span>{'u.location.country'}</span>
-                        <span>{'u.location.city'}</span>
-                        <span>{u.status}</span>
-                    </div>
-                </div>
-            </div>)
-        }
-    </div>
-}
+                            <button onClick={() => {
+                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                    withCredentials: true,
+                                    headers:  {
+                                        "API-KEY":"2cc3354f-01b5-4bfb-aa39-e518c7551d43"
+                                    } ,
+                                })
+                                    .then(response => {
+                                    if (response.data.resultCode == 1){
+                                        props.unfollow(u.id)
+                                    }
+                                });
+                            }
 
-export default Users;
+                            }>Unfollow</button> :
+                            <button className={s.mode_Green} onClick={() => {
+
+                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                    withCredentials: true,
+                                    headers:  {
+                                        "API-KEY":"2cc3354f-01b5-4bfb-aa39-e518c7551d43"
+                                    }
+                                })
+                                    .then(response => {
+                                    if (response.data.resultCode == 0){
+                                        props.follow(u.id);
+                                    }
+                                });
+
+                            }
+
+                            }>Follow</button>
+                            }
+                            </div>
+                            <div className={s.discription}>
+                            <span className={s.name}>{u.name}</span>
+                            <span>{'u.location.country'}</span>
+                            <span>{'u.location.city'}</span>
+                            <span>{u.status}</span>
+                            </div>
+                            </div>
+                            </div>)
+                            }
+                            </div>
+                            }
+
+                            export default Users;
