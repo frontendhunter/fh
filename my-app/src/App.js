@@ -1,18 +1,18 @@
 import './App.css';
-import React from 'react'
-import Header from './components/Header/Header';
+import React from 'react';
 import Sidebar from './components/Sidebar/Sidebar';
 import {Route} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 
 const App = (props) => {
     return (
 
         <div className="AppWrapper">
-            <Header/>
+            <HeaderContainer/>
             <Sidebar store={props.store}/>
             <div className='contentWrapper'>
                 <Route path="/dialogs" render={() => <DialogsContainer />}/>
