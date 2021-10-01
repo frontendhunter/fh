@@ -15,8 +15,14 @@ const Users = (props) => {
 
     return <div className={s.all}>
         <div className={s.pages}>{pages.map(p => {
-            return <span onClick={() => props.onPageChanged(p)}
-                         className={(p === props.currentPage ? s.currentPage : '')}>{` ${p} `}</span>
+            if (p < props.currentPage + 5 && p > props.currentPage - 5) {
+                return <span onClick={() => props.onPageChanged(p)}
+                             className={(p === props.currentPage ? s.currentPage : '')}>{` ${p} `}</span>
+            } else if (p === pages.length) {
+                return <span onClick={() => props.onPageChanged(p)}
+                             className={(p === props.currentPage ? s.currentPage : '')}>{` ...${p} `}</span>
+            }  
+
         })}</div>
         {
 
