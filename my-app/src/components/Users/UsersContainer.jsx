@@ -12,10 +12,14 @@ import Users from './Users';
 import Preloader from "../../common/Preloader";
 import {usersAPI} from "../../ api/api";
 
+
 class UsersContainer extends React.Component {
     componentDidMount() {
+
         this.props.toggleIsFetching(true)
+
         usersAPI.getUsers(this.props.currentPage,this.props.pageSize).then(data => {
+
             this.props.toggleIsFetching(false)
             this.props.setUsers(data.items)
             this.props.setTotalUsersCount(data.totalCount)
@@ -25,13 +29,14 @@ class UsersContainer extends React.Component {
 
     }
 
-    onPageChanged = (currentPage) => {
+    onPageChanged = (pageNumber) => {
         debugger
         this.props.toggleIsFetching(true)
-        this.props.setCurrentPage(currentPage);
-        usersAPI.getUsers(this.props.currentPage,this.props.pageSize).then(data => {
-            this.props.setUsers(data.items)
+        this.props.setCurrentPage(pageNumber);
+        usersAPI.getUsers(pageNumber,this.props.pageSize).then(data => {
+
             this.props.toggleIsFetching(false)
+            this.props.setUsers(data.items)
         })
     }
 
@@ -66,6 +71,5 @@ export default connect(mapStateToProps, {
     setUsers,
     setCurrentPage,
     setTotalUsersCount,
-    toggleIsFetching ,
-
+    toggleIsFetching
 })(UsersContainer);

@@ -30,15 +30,15 @@ const Users = (props) => {
                             <button onClick={() => {
                                 axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
                                     withCredentials: true,
-                                    headers:  {
-                                        "API-KEY":"2cc3354f-01b5-4bfb-aa39-e518c7551d43"
-                                    } ,
+                                    headers: {
+                                        "API-KEY": "2cc3354f-01b5-4bfb-aa39-e518c7551d43"
+                                    },
                                 })
                                     .then(response => {
-                                    if (response.data.resultCode == 1){
-                                        props.unfollow(u.id)
-                                    }
-                                });
+                                        if (response.data.resultCode == 1) {
+                                            props.unfollow(u.id)
+                                        }
+                                    });
                             }
 
                             }>Unfollow</button> :
@@ -46,31 +46,31 @@ const Users = (props) => {
 
                                 axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
                                     withCredentials: true,
-                                    headers:  {
-                                        "API-KEY":"2cc3354f-01b5-4bfb-aa39-e518c7551d43"
+                                    headers: {
+                                        "API-KEY": "2cc3354f-01b5-4bfb-aa39-e518c7551d43"
                                     }
                                 })
                                     .then(response => {
-                                    if (response.data.resultCode == 0){
-                                        props.follow(u.id);
-                                    }
-                                });
+                                        if (response.data.resultCode == 0) {
+                                            props.follow(u.id);
+                                        }
+                                    });
 
                             }
 
                             }>Follow</button>
-                            }
-                            </div>
-                            <div className={s.discription}>
-                            <span className={s.name}>{u.name}</span>
-                            <span>{'u.location.country'}</span>
-                            <span>{'u.location.city'}</span>
-                            <span>{u.status}</span>
-                            </div>
-                            </div>
-                            </div>)
-                            }
-                            </div>
-                            }
+                        }
+                    </div>
+                    <div className={s.discription}>
+                        <span className={s.name}>{u.name}</span>
+                        <span>{'u.location.country'}</span>
+                        <span>{'u.location.city'}</span>
+                        <span>{u.status}</span>
+                    </div>
+                </div>
+            </div>)
+        }
+    </div>
+}
 
-                            export default Users;
+export default Users;
