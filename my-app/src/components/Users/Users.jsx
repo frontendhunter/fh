@@ -3,6 +3,7 @@ import s from './Users.module.css'
 import defaultImage from '../../assets/images/defaultProfileImage.png'
 import {NavLink} from "react-router-dom";
 import * as axios from "axios";
+import {toggleFollowingProgress} from "../../redux/users-reducer";
 
 
 const Users = (props) => {
@@ -33,7 +34,8 @@ const Users = (props) => {
                             <img src={u.photos.small === null ? defaultImage : u.photos.small}/>
                         </NavLink>
                         {u.followed ?
-                            <button onClick={() => {
+                            <button disabled={props.followingInProgress.some(id => id===u.id)} onClick={() => {
+                                props.toggleFollowingProgress(true,u.id)
                                 axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
                                     withCredentials: true,
                                     headers: {
@@ -44,12 +46,13 @@ const Users = (props) => {
                                         if (response.data.resultCode == 1) {
                                             props.unfollow(u.id)
                                         }
+                                        props.toggleFollowingProgress(false,u.id)
                                     });
                             }
 
                             }>Unfollow</button> :
-                            <button className={s.mode_Green} onClick={() => {
-
+                            <button disabled={props.followingInProgress.some(id => id===u.id)} className={s.mode_Green} onClick={() => {
+                                props.toggleFollowingProgress(true,u.id)
                                 axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
                                     withCredentials: true,
                                     headers: {
@@ -60,6 +63,7 @@ const Users = (props) => {
                                         if (response.data.resultCode == 0) {
                                             props.follow(u.id);
                                         }
+                                        props.toggleFollowingProgress(false,u.id)
                                     });
 
                             }

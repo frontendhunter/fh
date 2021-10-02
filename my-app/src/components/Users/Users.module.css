@@ -41,8 +41,13 @@
     border: none;
 
 }
+
 .image_wrap button.mode_Green{
     background-color: darkseagreen;
+}
+
+.image_wrap button:disabled{
+    background-color: lightslategray;
 }
 .pages {
     cursor: pointer;
