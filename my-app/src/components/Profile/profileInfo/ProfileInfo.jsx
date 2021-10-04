@@ -2,6 +2,7 @@ import React from "react"
 import s from './ProfileInfo.module.css'
 import Preloader from "../../../common/Preloader";
 import defPhoto from "../../../assets/images/defaultProfileImage.png"
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
 
@@ -18,6 +19,11 @@ const ProfileInfo = (props) => {
             </div>
             <div className={s.profileInfo}>
                 <div>Name: <b>{props.profile.fullName}</b></div>
+                <div>
+
+                    <ProfileStatus status={" Wake up & F*ck this World"}/>
+
+                </div>
                 <hr/>
                 <img src={props.profile.photos.large?props.profile.photos.large:defPhoto}/>
                 <div>Discription: {props.profile.aboutMe}</div>

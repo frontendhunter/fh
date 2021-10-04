@@ -5,3 +5,6 @@
 .profileInfo{
     padding: 10px;
 }
+.statusWrapper div{
+    display: inline-block;
+}
