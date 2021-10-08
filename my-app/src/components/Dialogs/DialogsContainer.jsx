@@ -16,18 +16,14 @@ let mapStateToProps = (state) => {
 };
 let mapDispatchToProps = (dispatch) => {
     return {
-        messageChange: (txt) => {
-            dispatch(onMessageChangeActionCreator(txt))
-        },
-        addMessage: () => {
-            dispatch(addMessageActionCreator())
+
+        addMessage: (newMessageBody) => {
+            dispatch(addMessageActionCreator(newMessageBody))
         }
 
     }
 };
 
-// let withAuthRedirectComponent = WithAuthRedirect(Dialogs);
-// const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(withAuthRedirectComponent);
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     WithAuthRedirect

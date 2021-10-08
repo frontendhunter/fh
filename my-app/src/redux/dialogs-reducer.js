@@ -1,5 +1,5 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const MESSAGE_CHANGE = 'MESSAGE-CHANGE';
+
 
 let initialState = {
     dialogs: [
@@ -48,7 +48,6 @@ let initialState = {
             message: 'popa pisia popa pisia popa pisia'
         }
     ],
-    newMessageText: 'Hello',
 };
 
 const dialogsReducer = (state = initialState, action) => {
@@ -61,22 +60,17 @@ const dialogsReducer = (state = initialState, action) => {
                     id: 5,
                     name: 'me',
                     img: 'https://pbs.twimg.com/profile_images/1412450786542379011/IY6aPa50.png',
-                    message: body
+                    message: action.newMessageBody
                 }],
-                newMessageText: ''
             };
-        case MESSAGE_CHANGE:
-            return {
-                ...state,
-                newMessageText: action.text
-            };
+
         default:
             return state;
 
     }
 }
 
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
-export const onMessageChangeActionCreator = (txt) => ({type: MESSAGE_CHANGE, text: txt});
+export const addMessageActionCreator = (newMessageBody) => ({type: ADD_MESSAGE,newMessageBody});
+
 
 export default dialogsReducer;
