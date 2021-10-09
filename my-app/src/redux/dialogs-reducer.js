@@ -53,7 +53,7 @@ let initialState = {
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
-            let body = state.newMessageText;
+
             return {
                 ...state,
                 messages: [...state.messages, {
