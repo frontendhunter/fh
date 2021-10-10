@@ -58,5 +58,4 @@ export default compose(
         setCurrentPage,
         toggleFollowingProgress,
         getUsers,
-    }),
-    WithAuthRedirect)(UsersContainer)
+    }))(UsersContainer)
