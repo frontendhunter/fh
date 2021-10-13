@@ -13,5 +13,5 @@ console.log('profileP uppdate')
             <MyPostsContainer  store={props.store}/>
         </main>
     )
-}
+}//
 export default Profile
