@@ -5,7 +5,7 @@ import ProfileInfo from "./profileInfo/ProfileInfo";
 
 
 const Profile = (props) => {
-
+console.log('profileP uppdate')
     return (
 
         <main className={s.main}>
