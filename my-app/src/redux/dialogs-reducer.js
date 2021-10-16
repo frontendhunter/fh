@@ -1,5 +1,4 @@
-const ADD_MESSAGE = 'ADD-MESSAGE';
-
+const ADD_MESSAGE = 'dialogs/ADD-MESSAGE';
 
 let initialState = {
     dialogs: [
@@ -70,7 +69,7 @@ const dialogsReducer = (state = initialState, action) => {
     }
 }
 
-export const addMessageActionCreator = (newMessageBody) => ({type: ADD_MESSAGE,newMessageBody});
+export const addMessageActionCreator = (newMessageBody) => ({type: ADD_MESSAGE, newMessageBody});
 
 
 export default dialogsReducer;

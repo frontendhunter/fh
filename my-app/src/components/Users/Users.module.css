@@ -12,9 +12,6 @@
     border-radius: 5px;
     background-color: rgba(255,173,135,0.5);
 }
-.discription{
-
-}
 .image_wrap{
     width: 19.9%;
 }
@@ -48,13 +45,4 @@
 
 .image_wrap button:disabled{
     background-color: lightslategray;
-}
-.pages {
-    cursor: pointer;
-    font-size: 1.2em;
-    text-align: center;
-}
-.currentPage{
-    color: crimson;
-    font-weight: bolder ;
 }
