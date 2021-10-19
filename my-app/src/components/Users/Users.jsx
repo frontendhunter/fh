@@ -3,7 +3,6 @@ import s from './Users.module.css';
 import Paginator from "../../common/Paginator";
 import User from "./User";
 
-
 const Users = (props) => {
 
     return <div className={s.all}>
@@ -12,6 +11,7 @@ const Users = (props) => {
                    currentPage={props.currentPage}
                    pageSize={props.pageSize}
                    onPageChanged={props.onPageChanged}
+
         />
         <div>
             {
@@ -19,7 +19,11 @@ const Users = (props) => {
                                            user={u}
                                            followingInProgress={props.followingInProgress}
                                            follow={props.follow}
-                                           unfollow={props.unfollow}/>)
+                                           unfollow={props.unfollow}
+                                           auth={props.isAuth}
+
+                />)
+
             }
         </div>
 

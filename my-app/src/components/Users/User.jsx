@@ -2,29 +2,32 @@ import React from "react";
 import s from './Users.module.css';
 import defaultImage from '../../assets/images/defaultProfileImage.png';
 import {NavLink} from "react-router-dom";
-import Paginator from "../../common/Paginator";
 
 
-const User = ({user,followingInProgress,follow,unfollow}) => {
+const User = ({user, followingInProgress, follow, unfollow, auth}) => {
     return <div className={s.userContainer}>
         <div className={s.image_wrap}>
             <NavLink to={`/Profile/${user.id}`}>
                 <img src={user.photos.small === null ? defaultImage : user.photos.small}/>
             </NavLink>
-            {user.followed ?
+
+            {(this.auth)?{
+           if( user.followed){
                 <button disabled={followingInProgress.some(id => id === user.id)}
                         onClick={() => {
-                             unfollow(user.id)
+                            unfollow(user.id)
                         }
 
-                        }>Unfollow</button> :
+                        }>Unfollow</button> } else{
                 <button disabled={followingInProgress.some(id => id === user.id)}
-                        className={s.mode_Green} onClick={() => {
-                     follow(user.id)
-                }
-
-                }>Follow</button>
+                className={s.mode_Green} onClick={() => {
+                follow(user.id)
             }
+
+            }>Follow</button>
+            }
+
+            }:null}
         </div>
         <div className={s.discription}>
             <span className={s.name}>{user.name}</span>

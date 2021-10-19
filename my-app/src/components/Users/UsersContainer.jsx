@@ -18,7 +18,6 @@ import {
     getUsers,
 } from "../../redux/users-selectors";
 
-
 class UsersContainer extends React.Component {
     componentDidMount() {
         const {currentPage, pageSize} = this.props;
@@ -41,19 +40,23 @@ class UsersContainer extends React.Component {
                    unfollow={this.props.unfollow}
                    follow={this.props.follow}
                    followingInProgress={this.props.followingInProgress}
+                   isAuth={this.props.isAuth}
             />
         </>
     }
 }
 
 let mapStateToProps = (state) => {
+    debugger
     return {
+
         users: getUsers(state),
         pageSize: getPageSize(state),
         totalUsersCount: getTotalUsersCount(state),
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),
         followingInProgress: getFollowingInProgress(state),
+        isAuth: state.auth.isAuth,
     }
 }
 
