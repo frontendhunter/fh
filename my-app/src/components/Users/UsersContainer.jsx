@@ -17,6 +17,7 @@ import {
     getTotalUsersCount,
     getUsers,
 } from "../../redux/users-selectors";
+import {WithAuthRedirect} from "../../hoc/withAuthRedirect";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -68,4 +69,6 @@ export default compose(
         setCurrentPage,
         toggleFollowingProgress,
         getUsers: requestUsers,
-    }))(UsersContainer)
+    })
+,WithAuthRedirect
+)(UsersContainer)
