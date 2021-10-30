@@ -3,7 +3,7 @@ import s from './Paginator.module.css';
 import cn from 'classnames'
 
 const Paginator = (props) => {
-debugger
+
     let portionSize = 10;
 
     let pagesCount = Math.ceil(props.totalUsersCount /  portionSize);

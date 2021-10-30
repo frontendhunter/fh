@@ -1,10 +1,8 @@
 import './App.css';
-import React from 'react';
+import React, {Suspense} from 'react';
 import Sidebar from './components/Sidebar/Sidebar';
 import {BrowserRouter, Route, withRouter} from "react-router-dom";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {connect, Provider} from "react-redux";
@@ -12,6 +10,10 @@ import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./common/Preloader";
 import store from "./redux/redux-store";
+import {WithSuspense} from "./hoc/withSuspense";
+
+const DialogsContainer = React.lazy(() => import ( "./components/Dialogs/DialogsContainer"))
+const ProfileContainer = React.lazy(() => import ("./components/Profile/ProfileContainer"))
 
 
 class App extends React.Component {
@@ -28,10 +30,13 @@ class App extends React.Component {
                     <HeaderContainer/>
                     <Sidebar store={this.props.store}/>
                     <div className='contentWrapper'>
-                        <Route path="/dialogs" render={() => <DialogsContainer/>}/>
-                        <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
-                        <Route path="/users" render={() => <UsersContainer/>}/>
-                        <Route path="/login" render={() => <Login/>}/>
+                        {
+                            //Withsuspense можно сделать без хока, см. доку реакта
+                        }
+                        <Route path="/dialogs" render={WithSuspense(DialogsContainer)}/>
+                        <Route path='/profile/:userId?' render={WithSuspense(ProfileContainer)}/>
+                        <Route path="/users" render={ WithSuspense(UsersContainer)}/>
+                        <Route path="/login" render={WithSuspense(Login)}/>
                     </div>
 
                 </div>

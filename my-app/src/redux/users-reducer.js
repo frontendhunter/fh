@@ -75,7 +75,6 @@ export const requestUsers = (page, pageSize) => async (dispatch) => {
     let data = await usersAPI.getUsers(page, pageSize);
     dispatch(toggleIsFetching(false));
     dispatch(setUsers(data.items));
-    debugger
     dispatch(setTotalUsersCount(data.totalCount));
 
 
