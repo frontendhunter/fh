@@ -1,10 +1,10 @@
 
-.img__wrap img {
-   width: 100%;
-}
 .profileInfo{
     padding: 10px;
 }
 .statusWrapper div{
     display: inline-block;
+}
+.profilePhoto{
+    width: 300px;
 }

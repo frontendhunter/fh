@@ -4,10 +4,10 @@ import Preloader from "../../../common/Preloader";
 import defPhoto from "../../../assets/images/defaultProfileImage.png"
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
-const ProfileInfo = ({profile,status,updateUserStatus}) => {
+const ProfileInfo = ({profile, status, updateUserStatus}) => {
 
-    if (!profile){
-        return<Preloader/>
+    if (!profile) {
+        return <Preloader/>
     }
     let contacts = profile.contacts;
 
@@ -23,15 +23,15 @@ const ProfileInfo = ({profile,status,updateUserStatus}) => {
 
                 </div>
                 <hr/>
-                <img src={profile.photos.large?profile.photos.large:defPhoto}/>
+                <img className={s.profilePhoto} src={profile.photos.large ? profile.photos.large : defPhoto}/>
                 <div>Discription: {profile.aboutMe}</div>
                 <hr/>
-                <div>looking For A Job: <b>{profile.lookingForAJob?'Yes!':'NO'}</b></div>
+                <div>looking For A Job: <b>{profile.lookingForAJob ? 'Yes!' : 'NO'}</b></div>
                 <p>{profile.lookingForAJobDescription}</p>
                 <hr/>
                 <div>
                     contacts:
-                    <p>{Object.values(contacts).map(el=><div>{el}</div>)}</p>
+                    <p>{Object.values(contacts).map(el => <div>{el}</div>)}</p>
                 </div>
             </div>
         </div>
