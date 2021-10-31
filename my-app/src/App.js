@@ -1,5 +1,5 @@
 import './App.css';
-import React, {Suspense} from 'react';
+import React from 'react';
 import Sidebar from './components/Sidebar/Sidebar';
 import {BrowserRouter, Route, withRouter} from "react-router-dom";
 import UsersContainer from "./components/Users/UsersContainer";

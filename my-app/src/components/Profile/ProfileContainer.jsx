@@ -2,18 +2,18 @@ import React from "react"
 import s from './Profile.module.css';
 import {connect} from "react-redux";
 import Profile from "./Profile";
-import {getProfile, getUserStatus, updateUserStatus} from "../../redux/profile-reducer";
+import {getProfile, getUserStatus, savePhoto, updateUserStatus} from "../../redux/profile-reducer";
 import {withRouter} from 'react-router-dom';
 import {compose} from "redux";
 
 
 class ProfileContainer extends React.Component {
 
-    refreshProfile(){
+    refreshProfile() {
         let userId = this.props.match.params.userId;
-        if (!userId){
+        if (!userId) {
             userId = this.props.authorizedUserId;
-            if (!userId){
+            if (!userId) {
                 this.props.history.push("/login")
             }
         }
@@ -27,14 +27,20 @@ class ProfileContainer extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
 
-        if (this.props.match.params.userId!== prevProps.match.params.userId) this.refreshProfile()
+        if (this.props.match.params.userId !== prevProps.match.params.userId) this.refreshProfile()
     }
 
     render() {
 
         return (
             <main className={s.main}>
-                <Profile {...this.props} profile={this.props.profile} status={this.props.status} updateUserStatus={this.props.updateUserStatus}/>
+                <Profile {...this.props}
+                         isOwner={ !this.props.match.params.userId}
+                         savePhoto={this.props.savePhoto}
+                         profile={this.props.profile}
+                         status={this.props.status}
+                         updateUserStatus={this.props.updateUserStatus}
+                />
             </main>
         )
     }
@@ -49,6 +55,6 @@ let mapStateToProps = (state) => ({
 
 
 export default compose(
-    connect(mapStateToProps, {getProfile, getUserStatus, updateUserStatus}),
+    connect(mapStateToProps, {getProfile, getUserStatus, updateUserStatus,savePhoto}),
     withRouter,
 )(ProfileContainer);

@@ -4,13 +4,17 @@ import Preloader from "../../../common/Preloader";
 import defPhoto from "../../../assets/images/defaultProfileImage.png"
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
-const ProfileInfo = ({profile, status, updateUserStatus}) => {
+const ProfileInfo = ({profile, status, updateUserStatus, isOwner,savePhoto}) => {
 
     if (!profile) {
         return <Preloader/>
     }
     let contacts = profile.contacts;
-
+    let onMainPhotoSelected = (e) => {
+        if (e.target.files.length){
+             savePhoto(e.target.files[0])
+        }
+    }
 
     return (
         <div>
@@ -24,6 +28,7 @@ const ProfileInfo = ({profile, status, updateUserStatus}) => {
                 </div>
                 <hr/>
                 <img className={s.profilePhoto} src={profile.photos.large ? profile.photos.large : defPhoto}/>
+                {isOwner && <input onChange={onMainPhotoSelected} type={'file'}></input>}
                 <div>Discription: {profile.aboutMe}</div>
                 <hr/>
                 <div>looking For A Job: <b>{profile.lookingForAJob ? 'Yes!' : 'NO'}</b></div>
