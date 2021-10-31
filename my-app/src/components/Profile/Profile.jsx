@@ -5,7 +5,6 @@ import ProfileInfo from "./profileInfo/ProfileInfo";
 
 
 const Profile = (props) => {
-    console.log('profileP update')
     return (
 
         <main className={s.main}>
@@ -13,7 +12,10 @@ const Profile = (props) => {
                          savePhoto={props.savePhoto}
                          profile={props.profile}
                          status={props.status}
-                         updateUserStatus={props.updateUserStatus}/>
+                         updateUserStatus={props.updateUserStatus}
+                         saveProfile={props.saveProfile}
+
+            />
             <MyPostsContainer store={props.store}/>
         </main>
     )

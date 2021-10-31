@@ -17,22 +17,44 @@ const ProfileStatusWithHooks  = (props) => {
         props.updateUserStatus(status)
     }
 
+    const showPersonalStatus = () => {
+        // { !editMode &&
+        // <div>
+        //     <span onDoubleClick={()=>setEditMode(true)} >  { status||' write somebody'} </span>
+        // </div>
+        // }
+        // {
+        //     editMode &&
+        //     <div>
+        //         <input onChange={onStatusChange}
+        //                onBlur={deactivateEditMode }
+        //                value={status}
+        //                autoFocus={true} />
+        //     </div>
+        // }
+        if (!editMode){
+            return <div>
+                <span onDoubleClick={()=>setEditMode(true)} >  { status||' write somebody'} </span>
+            </div>
+        } else if(editMode){
+            return <div>
+                <input onChange={onStatusChange}
+                       onBlur={deactivateEditMode }
+                       value={status}
+                       autoFocus={true} />
+            </div>
+        }
+    }
+
     return <div className={s.statusWrapper}>
-            Status:
-            { !editMode &&
-                <div>
-                    <span onDoubleClick={()=>setEditMode(true)} >  { status||' write somebody'} </span>
-                </div>
-            }
-            {
-                editMode &&
-                <div>
-                    <input onChange={onStatusChange}
-                           onBlur={deactivateEditMode }
-                           value={status}
-                           autoFocus={true} />
-                </div>
-            }
+        <span>Статус: </span>
+        {props.isOwner
+            ? showPersonalStatus()
+            : <div>
+                <span>  { status||' write somebody'} </span>
+            </div>
+         }
+
 
         </div>
 }

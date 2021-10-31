@@ -2,9 +2,18 @@
 .profileInfo{
     padding: 10px;
 }
+.statusWrapper{
+
+    opacity: 0.8;
+}
 .statusWrapper div{
     display: inline-block;
 }
 .profilePhoto{
     width: 300px;
+}
+.profileData{
+}
+.profileLinks{
+    padding-left: 10px;
 }
