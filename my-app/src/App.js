@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import Sidebar from './components/Sidebar/Sidebar';
-import {BrowserRouter, Route, withRouter} from "react-router-dom";
+import {BrowserRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {connect, Provider} from "react-redux";
@@ -11,12 +11,14 @@ import Preloader from "./common/Preloader";
 import store from "./redux/redux-store";
 import {WithSuspense} from "./hoc/withSuspense";
 
+
 const DialogsContainer = React.lazy(() => import ( "./components/Dialogs/DialogsContainer"))
 const ProfileContainer = React.lazy(() => import ("./components/Profile/ProfileContainer"))
 const Login = React.lazy(() => import ("./components/Login/Login"))
 
 
 class App extends React.Component {
+
     componentDidMount() {
         this.props.initializeApp()
     }
@@ -33,10 +35,21 @@ class App extends React.Component {
                         {
                             //Withsuspense можно сделать без хока, см. доку реакта
                         }
-                        <Route path="/dialogs" render={WithSuspense(DialogsContainer)}/>
-                        <Route path='/profile/:userId?' render={WithSuspense(ProfileContainer)}/>
-                        <Route path="/users" render={ () => <UsersContainer/>}/>
-                        <Route path="/login" render={WithSuspense(Login)}/>
+                        <Switch>
+                            {/*swicth нужен, когда нам нужно перейсти по первому откликнувшемуся роуту*/}
+
+
+                            <Route path="/dialogs" render={WithSuspense(DialogsContainer)}/>
+                            <Route path='/profile/:userId?' render={WithSuspense(ProfileContainer)}/>
+                            <Route path="/users" render={ () => <UsersContainer/>}/>
+                            <Route path="/login" render={WithSuspense(Login)}/>
+                            <Route exact path='/' render={()=><Redirect to={"/profile"}/>}/>
+                            <Route path="*" render={()=><div>404 NOT FOUND</div>}/>
+
+
+
+                        </Switch>
+
                     </div>
 
                 </div>
