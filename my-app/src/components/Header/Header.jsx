@@ -10,10 +10,11 @@ const Header = (props) => {
             <div className={s.wrapper}>
                 <div className={s.helper_wrapper}>
                     <div className={s.left}>
-                        <h2 className={s.logo__txt}>  <span>FH</span> </h2>
+                        {/*<h2 className={s.logo__txt}>  <span>FH</span> </h2>*/}
+                        <NavLink to="/profile" className={s.logo__txt} activeClassName={s.active}><span>FH</span></NavLink>
                         <nav className={s.nav}>
                             <NavLink to="/profile" className={s.item} activeClassName={s.active}>Моё резюме</NavLink>
-                            <NavLink to="/dialogs" className={s.item} activeClassName={s.active}>Сообщения</NavLink>
+                            {/*<NavLink to="/dialogs" className={s.item} activeClassName={s.active}>Сообщения</NavLink>*/}
                             <NavLink to="/users" className={s.item} activeClassName={s.active}>Смотреть анкеты</NavLink>
                         </nav>
                     </div>

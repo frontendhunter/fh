@@ -1,19 +1,86 @@
+.hiden{
+    display: none;
+}
+.accept__btn{
+    line-height: 1.43;
+    font-size: 14px;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0;
+    border-radius: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    user-select: none;
+    white-space: nowrap;
+    cursor: pointer;
+    height: 40px;
+    position: relative;
+    padding: 0 12px;
+    font-family: inherit;
+    line-height: 38px;
+    color: #fff;
+    border: 1px solid #ccc;
+    background-color:#1E88E5;
+}
+.accept__btn:hover{
 
+    background-color: #1c80d8;
+}
+.formSummaryError{
+    color: #D6001C;
+}
+.fields{
+    line-height: 1.43;
+    font-size: 14px;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 12px;
+    margin: 0 0 1em 0;
+    border-radius: 0;
+    border: 1px solid #ccc;
+    font-family: Arial,sans-serif;
+    color: #333;
+    background-color: #fff;
+    line-height: 38px;
+    resize: none;
+}
+
+
+.links__md{
+    color: #2998ff;
+    text-decoration: none;
+    border: 0;
+    background: transparent;
+    font-size: inherit;
+    outline: none;
+    cursor: pointer;
+
+}
+.links__md:active{
+    color: #D6001C;
+}
 .profileInfo{
     padding: 10px;
 }
-.statusWrapper{
-
-    opacity: 0.8;
+.subHeaders{
+    color: #999;
+    font-size: 24px;
+    line-height: 1.16;
+    font-family: ProximaNovaCond,Arial Narrow,Roboto Condensed,Arial,sans-serif;
 }
+.subHeaders b {
+    font-weight: bolder;
+    color: #212122;
+}
+
+
 .statusWrapper div{
     display: inline-block;
+    font-weight: bold;
 }
 .profilePhoto{
     width: 300px;
 }
 .profileData{
-}
-.profileLinks{
-    padding-left: 10px;
 }

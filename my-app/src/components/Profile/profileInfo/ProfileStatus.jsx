@@ -40,11 +40,11 @@ class ProfileStatus extends React.Component {
 
     render() {
         return <div className={s.statusWrapper}>
-            Status:
+            Должность:
             {
                 !this.state.editMode &&
-                <div>
-                    <span onDoubleClick={this.activateEditMode}>  {this.props.status || ' write somebody'}</span>
+                <div >
+                    <span onDoubleClick={this.activateEditMode} >  {this.props.status || ' write somebody'}</span>
                 </div>
             }
             {

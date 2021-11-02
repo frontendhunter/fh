@@ -12,46 +12,50 @@ let maxLength1000 = maxLengthCreator(1000)
 
 
 const ProfileDataForm = ({profile, handleSubmit,error}) => {
-debugger
+
     let contacts = profile.contacts;
 
     return <form onSubmit={handleSubmit} className={s.profileData}>
 
 
-        {
-            error && <div className={s.formSummaryError}>{ error}</div>
-        }
 
-        <div><b>Имя: </b><Field validate={[required, maxLength20]} placeholder='Имя' name={'fullName'}
+
+        <div><b>Имя: </b><Field className={s.fields} validate={[required, maxLength20]} placeholder='Ваше имя' name={'fullName'}
                                 component={Input}/></div>
-        <div>
-            <button onClick={handleSubmit}>save</button>
-        </div>
+
 
         <div>
             <b>Обо мне:</b>
 
-            <Field validate={[required, maxLength300]} placeholder='Обо мне...' name={'aboutMe'} component={Textarea}/>
+            <Field className={s.fields} validate={[required, maxLength300]} placeholder='Обо мне...' name={'aboutMe'} component={Textarea}/>
         </div>
-        <hr/>
         <div>
             {/*<b>Ищу работу:</b> {profile.lookingForAJob ? 'Да!' : 'Нет'}*/}
+            <b>Ищу работу</b>
             <Field validate={[required]} type='checkBox' name={'lookingForAJob'} component={Input}/>
+
         </div>
         <p>
-            <b>скилы: </b>
-            <Field validate={[required, maxLength1000]} placeholder='Мои навыки...' name={'lookingForAJobDescription'}
+            <b>Навыки: </b>
+            <Field className={s.fields} validate={[required, maxLength1000]} placeholder='Мои навыки...' name={'lookingForAJobDescription'}
                    component={Textarea}/>
 
         </p>
-        <hr/>
         <div>
-            contacts:
-            <p className={s.profileLinks}>{Object.keys(contacts).map(el => <div key={el}>{el}: <Field validate={[maxLength100]}
+            <b>Контакты:</b>
+            <p className={s.profileLinks}>{Object.keys(contacts).map(el => <div key={el}><span className={s.labelInput}>{el}:</span> <Field className={s.fields} validate={[maxLength100]}
                                                                                              placeholder={el}
                                                                                              name={'contacts.' + el}
                                                                                              component={Input}/>
             </div>)}</p>
+        </div>
+        <div>
+
+            {
+                error && <div className={s.formSummaryError}>{ error}</div>
+            }
+
+            <button className={s.accept__btn} onClick={handleSubmit}>Сохранить</button>
         </div>
     </form>
 }

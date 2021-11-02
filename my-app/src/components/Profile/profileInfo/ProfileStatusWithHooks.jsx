@@ -33,9 +33,8 @@ const ProfileStatusWithHooks  = (props) => {
         //     </div>
         // }
         if (!editMode){
-            return <div>
-                <span onDoubleClick={()=>setEditMode(true)} >  { status||' write somebody'} </span>
-            </div>
+            return <span onDoubleClick={()=>setEditMode(true)} >  { status||' write somebody'} </span>
+
         } else if(editMode){
             return <div>
                 <input onChange={onStatusChange}
@@ -46,14 +45,16 @@ const ProfileStatusWithHooks  = (props) => {
         }
     }
 
-    return <div className={s.statusWrapper}>
+    return <div>
         <span>Статус: </span>
+        <b>
         {props.isOwner
             ? showPersonalStatus()
-            : <div>
+            :
                 <span>  { status||' write somebody'} </span>
-            </div>
+
          }
+        </b>
 
 
         </div>

@@ -31,17 +31,20 @@ const ProfileInfo = ({profile, status, updateUserStatus, isOwner, savePhoto, sav
         <div>
 
             <div className={s.profileInfo}>
-                <div>Имя: <b>{profile.fullName}</b></div>
+                <h3 className={s.subHeaders + ' '+ s.nameBlock}> Имя: <b>{profile.fullName}</b> </h3>
+
                 <div>
+                    <img className={s.profilePhoto} src={profile.photos.large ? profile.photos.large : defPhoto}/>
+                    <input className={s.hiden}  name="file" id="input__file"  onChange={onMainPhotoSelected}   type={'file'}/>
+                    <div>{isOwner &&
+                    <label htmlFor="input__file"  className={s.links__md}>Изменить фото </label>}
+                    </div>
+                </div>
+                <h3  className={s.subHeaders}>
 
                     <ProfileStatusWithHooks isOwner={isOwner} status={status} updateUserStatus={updateUserStatus}/>
 
-                </div>
-                <hr/>
-                <div>
-                    <img className={s.profilePhoto} src={profile.photos.large ? profile.photos.large : defPhoto}/>
-                    {isOwner && <input onChange={onMainPhotoSelected} type={'file'}/>}
-                </div>
+                </h3>
 
                 {editMode
                     ? <ProfileDataForm initialValues={profile} profile={profile} onSubmit={onSubmit} />
@@ -59,24 +62,22 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
 
     return <div className={s.profileData}>
         {isOwner && <div>
-            <button onClick={goToEditMode}>Редактировать</button>
+            <button  className={s.links__md}  onClick={goToEditMode}>Редактировать</button>
         </div>}
 
         <div>
-            <b>Описание:</b> {profile.aboutMe}
+            <h3 className={s.subHeaders}>Описание:</h3> {profile.aboutMe}
         </div>
-        <hr/>
         <div>
-            <b>Ищу работу:</b> {profile.lookingForAJob ? 'Да!' : 'Нет'}
+            <h3 className={s.subHeaders}>Ищу работу:</h3> {profile.lookingForAJob ? 'Да!' : 'Нет'}
         </div>
         <p>
-            <b>Скилы: </b>
+            <h3 className={s.subHeaders}>Ключевые навыки: </h3>
             {profile.lookingForAJobDescription}
         </p>
-        <hr/>
         <div>
-            contacts:
-            <p className={s.profileLinks}>{Object.keys(contacts).map(el => <div key={el}>{el}:--  {contacts[el]}</div>)}</p>
+            <h3 className={s.subHeaders}>contacts:</h3>
+            <div className={  s.profileLinks}>{Object.keys(contacts).map(el => <div key={el}>{el}: <a className={s.links__md} target="_blank" href={contacts[el]}>{contacts[el]}</a> </div>)}</div>
         </div>
     </div>
 }

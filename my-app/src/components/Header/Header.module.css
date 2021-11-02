@@ -22,23 +22,26 @@
    align-items: center;
 }
 .logo__txt {
-   font-family: "Suez One", serif;
    text-align: center;
    margin: 0 20px 0 0;
    background-color: #D6001C;
-width: 50px;
+   width: 50px;
    height: 50px;
    display: flex;
    justify-content: center;
    align-items: center;
    border-radius: 50%;
+   text-decoration: none;
 }
 .logo__txt span{
    color: white;
-   font-weight: lighter;
    margin: 0;
    padding: 0;
    line-height: 1;
+   padding-bottom: 3px;
+   text-decoration: none;
+   font-size: 1.4em;
+   font-weight: bold;
 }
 
 .nav{
@@ -55,12 +58,16 @@ width: 50px;
    color: #D63247;
    font-weight: bolder;
 }
+.item:hover{
+   color: #D63247;
+}
 
 .login{
 position: relative;
 }
 .linkWrap{
    display: none;
+   color: rgba(255,255,255,0.7);
 }
 
 
@@ -70,7 +77,6 @@ position: relative;
    background-color:  #212122;
    left: -78px;
    padding: 10px 25px 0;
-   text-align: left;
 }
 .profile:hover span{
    display: block;
@@ -78,20 +84,24 @@ position: relative;
    border-bottom: 1px  solid white;
    padding-bottom: 1em;
    text-align: center;
+   transition: 0.3s;
+}
+.profile span:hover{
+color:rgba(255,255,255,1)
 }
 .profile:hover  .loginButton{
    border-bottom:none;
 }
 .nickname{
-   color: white;
    text-decoration: none;
    cursor: pointer;
    margin: 10px 0;
+   color: inherit;
 }
 .loginButton{
    display: none;
    background-color: transparent;
-   color: white;
+   color: rgba(255,255,255,0.7);
    cursor: pointer;
    font-size: inherit;
    text-decoration: none;
