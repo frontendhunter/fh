@@ -77,6 +77,8 @@ position: relative;
    background-color:  #212122;
    left: -78px;
    padding: 10px 25px 0;
+   border-radius: 5px;
+   box-shadow: 0 0 5px #212122;
 }
 .profile:hover span{
    display: block;

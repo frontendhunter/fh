@@ -20,34 +20,35 @@ const ProfileInfo = ({profile, status, updateUserStatus, isOwner, savePhoto, sav
         }
     }
 
-    let onSubmit =   (formData) => {
-          saveProfile(formData)
-            .then(()=>{
-            setEditMode(false);
-        })
+    let onSubmit = (formData) => {
+        saveProfile(formData)
+            .then(() => {
+                setEditMode(false);
+            })
     }
 
     return (
         <div>
 
             <div className={s.profileInfo}>
-                <h3 className={s.subHeaders + ' '+ s.nameBlock}> Имя: <b>{profile.fullName}</b> </h3>
+                <h3 className={s.subHeaders + ' ' + s.nameBlock}> Имя: <b>{profile.fullName}</b></h3>
 
                 <div>
                     <img className={s.profilePhoto} src={profile.photos.large ? profile.photos.large : defPhoto}/>
-                    <input className={s.hiden}  name="file" id="input__file"  onChange={onMainPhotoSelected}   type={'file'}/>
+                    <input className={s.hiden} name="file" id="input__file" onChange={onMainPhotoSelected}
+                           type={'file'}/>
                     <div>{isOwner &&
-                    <label htmlFor="input__file"  className={s.links__md}>Изменить фото </label>}
+                    <label htmlFor="input__file" className={s.links__md}>Изменить фото </label>}
                     </div>
                 </div>
-                <h3  className={s.subHeaders}>
+                <h3 className={s.subHeaders}>
 
                     <ProfileStatusWithHooks isOwner={isOwner} status={status} updateUserStatus={updateUserStatus}/>
 
                 </h3>
-
+                <hr/>
                 {editMode
-                    ? <ProfileDataForm initialValues={profile} profile={profile} onSubmit={onSubmit} />
+                    ? <ProfileDataForm initialValues={profile} profile={profile} onSubmit={onSubmit}/>
                     : <ProfileData goToEditMode={() => {
                         setEditMode(true)
                     }} profile={profile} isOwner={isOwner}/>
@@ -61,12 +62,13 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
     let contacts = profile.contacts;
 
     return <div className={s.profileData}>
-        {isOwner && <div>
-            <button  className={s.links__md}  onClick={goToEditMode}>Редактировать</button>
-        </div>}
 
-        <div>
-            <h3 className={s.subHeaders}>Описание:</h3> {profile.aboutMe}
+        <div className={s.discriptionsWrap}>
+            <div><h3 className={s.subHeaders}>Описание:</h3> {profile.aboutMe}</div>
+
+            <div>{isOwner && <button className={s.links__md + ' ' + s.profileData__changes}
+                                     onClick={goToEditMode}>Редактировать</button>}
+            </div>
         </div>
         <div>
             <h3 className={s.subHeaders}>Ищу работу:</h3> {profile.lookingForAJob ? 'Да!' : 'Нет'}
@@ -77,7 +79,8 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
         </p>
         <div>
             <h3 className={s.subHeaders}>contacts:</h3>
-            <div className={  s.profileLinks}>{Object.keys(contacts).map(el => <div key={el}>{el}: <a className={s.links__md} target="_blank" href={contacts[el]}>{contacts[el]}</a> </div>)}</div>
+            <div className={s.profileLinks}>{Object.keys(contacts).map(el => <div key={el}>{el}: <a
+                className={s.links__md} target="_blank" href={contacts[el]}>{contacts[el]}</a></div>)}</div>
         </div>
     </div>
 }

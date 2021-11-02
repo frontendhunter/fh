@@ -56,6 +56,7 @@
     outline: none;
     cursor: pointer;
 
+
 }
 .links__md:active{
     color: #D6001C;
@@ -83,4 +84,18 @@
     width: 300px;
 }
 .profileData{
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
+.discriptionsWrap{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding-top: 14px;
+}
+.discriptionsWrap h3{
+    line-height: 0;
+    margin-top: 12px;
+}
+

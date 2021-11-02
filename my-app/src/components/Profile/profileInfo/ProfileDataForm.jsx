@@ -21,9 +21,8 @@ const ProfileDataForm = ({profile, handleSubmit,error}) => {
 
 
         <div><b>Имя: </b><Field className={s.fields} validate={[required, maxLength20]} placeholder='Ваше имя' name={'fullName'}
-                                component={Input}/></div>
-
-
+                                component={Input}/>
+        </div>
         <div>
             <b>Обо мне:</b>
 
