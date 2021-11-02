@@ -2,7 +2,6 @@ import React from "react";
 import s from './Users.module.css';
 import defaultImage from '../../assets/images/defaultProfileImage.png';
 import {NavLink} from "react-router-dom";
-import Paginator from "../../common/Paginator";
 
 
 const User = ({user,followingInProgress,follow,unfollow}) => {
@@ -28,8 +27,6 @@ const User = ({user,followingInProgress,follow,unfollow}) => {
         </div>
         <div className={s.discription}>
             <span className={s.name}>{user.name}</span>
-            <span>{'user.location.country'}</span>
-            <span>{'user.location.city'}</span>
             <span>{user.status}</span>
         </div>
     </div>

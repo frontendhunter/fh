@@ -27,31 +27,32 @@ class App extends React.Component {
         if (!this.props.initialized) {
             return <Preloader/>
         } else {
-            return (
-                <div className="AppWrapper">
+            return (<div>
+
                     <HeaderContainer/>
-                    <Sidebar store={this.props.store}/>
-                    <div className='contentWrapper'>
-                        {
-                            //Withsuspense можно сделать без хока, см. доку реакта
-                        }
-                        <Switch>
-                            {/*swicth нужен, когда нам нужно перейсти по первому откликнувшемуся роуту*/}
+                    <div className="AppWrapper">
+                        {/*<Sidebar store={this.props.store}/>*/}
+                        <div className='contentWrapper'>
+                            {
+                                //Withsuspense можно сделать без хока, см. доку реакта
+                            }
+                            <Switch>
+                                {/*swicth нужен, когда нам нужно перейсти по первому откликнувшемуся роуту*/}
 
 
-                            <Route path="/dialogs" render={WithSuspense(DialogsContainer)}/>
-                            <Route path='/profile/:userId?' render={WithSuspense(ProfileContainer)}/>
-                            <Route path="/users" render={ () => <UsersContainer/>}/>
-                            <Route path="/login" render={WithSuspense(Login)}/>
-                            <Route exact path='/' render={()=><Redirect to={"/profile"}/>}/>
-                            <Route path="*" render={()=><div>404 NOT FOUND</div>}/>
+                                <Route path="/dialogs" render={WithSuspense(DialogsContainer)}/>
+                                <Route path='/profile/:userId?' render={WithSuspense(ProfileContainer)}/>
+                                <Route path="/users" render={() => <UsersContainer/>}/>
+                                <Route path="/login" render={WithSuspense(Login)}/>
+                                <Route exact path='/' render={() => <Redirect to={"/profile"}/>}/>
+                                <Route path="*" render={() => <div>404 NOT FOUND</div>}/>
 
 
+                            </Switch>
 
-                        </Switch>
+                        </div>
 
                     </div>
-
                 </div>
             );
         }

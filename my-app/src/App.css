@@ -4,14 +4,8 @@ html {
   padding: 0;
 }
 .AppWrapper {
-  max-width: 1170px;
+  max-width: 770px;
   margin: 0 auto;
-  display: grid;
-  grid-template-areas:
-    "h h"
-    "n c";
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
 }
 .contentWrapper{
   background-color: rgba(246, 213, 102,0.1);

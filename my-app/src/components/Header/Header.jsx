@@ -1,19 +1,38 @@
-import React from "react"
+import React, {useState} from "react"
 import s from './Header.module.css'
 import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
-   return (
-      <header className={s.header}>
-         <div className={s.logo}>
-            <h2 className={s.logo__txt}>Frontend<br/> Hunter</h2>
-         </div>
-          <div className={s.login}>
-              {props.isAuth
-                  ? <div>{props.login} - <button onClick={props.logout}>Log out</button></div>
-                  :<div><NavLink to={'/login'}>Login</NavLink> </div>}
-          </div>
-      </header>
-   )
+    const [dropDown,changeDropDown]=useState(false);
+
+    return (
+        <header className={s.header}>
+            <div className={s.wrapper}>
+                <div className={s.helper_wrapper}>
+                    <div className={s.left}>
+                        <h2 className={s.logo__txt}>  <span>FH</span> </h2>
+                        <nav className={s.nav}>
+                            <NavLink to="/profile" className={s.item} activeClassName={s.active}>Моё резюме</NavLink>
+                            <NavLink to="/dialogs" className={s.item} activeClassName={s.active}>Сообщения</NavLink>
+                            <NavLink to="/users" className={s.item} activeClassName={s.active}>Смотреть анкеты</NavLink>
+                        </nav>
+                    </div>
+
+
+
+                    <div className={s.login}>
+                        {props.isAuth
+                            ? <div className={s.profile}>
+                                <span >{props.login}</span>
+                                <span className={s.linkWrap}><NavLink to="/profile" className={s.nickname}>Профиль</NavLink></span>
+                                <span className={s.loginButton} onClick={props.logout}>Выйти</span>
+                        </div>
+                            : <div><NavLink className={s.loginButton} to={'/login'}>Войти</NavLink></div>}
+
+                    </div>
+                </div>
+            </div>
+        </header>
+    )
 }
 export default Header

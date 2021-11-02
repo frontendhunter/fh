@@ -11,17 +11,18 @@ const Users = (props) => {
                    currentPage={props.currentPage}
                    pageSize={props.pageSize}
                    onPageChanged={props.onPageChanged}
-                  // portionSize={props.portionSize}
+            // portionSize={props.portionSize}
 
         />
         <div>
             {
+
                 props.users.map(u => <User key={u.id}
-                                           user={u}
-                                           followingInProgress={props.followingInProgress}
-                                           follow={props.follow}
-                                           unfollow={props.unfollow}
-                                           auth={props.isAuth}
+                user={u}
+                followingInProgress={props.followingInProgress}
+                follow={props.follow}
+                unfollow={props.unfollow}
+                auth={props.isAuth}
 
                 />)
 
