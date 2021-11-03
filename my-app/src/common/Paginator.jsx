@@ -1,12 +1,14 @@
 import React, {useState} from "react";
 import s from './Paginator.module.css';
-import cn from 'classnames'
+import cn from 'classnames';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faAngleRight, faAngleLeft, faAngleDoubleLeft, faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons';
 
 const Paginator = (props) => {
 
     let portionSize = 10;
 
-    let pagesCount = Math.ceil(props.totalUsersCount /  portionSize);
+    let pagesCount = Math.ceil(props.totalUsersCount /  props.pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
@@ -20,8 +22,13 @@ const Paginator = (props) => {
     return <div className={s.pages}>
         {portionNumber > 1 &&
         <button onClick={() => {
+            setPortionNumber( 1)
+        }}><FontAwesomeIcon icon={faAngleDoubleLeft}/></button>
+        }
+{portionNumber > 1 &&
+        <button onClick={() => {
             setPortionNumber(portionNumber - 1)
-        }}>PREV</button>
+        }}><FontAwesomeIcon icon={faAngleLeft}/></button>
         }
 
         {pages
@@ -44,7 +51,14 @@ const Paginator = (props) => {
         {portionCount > portionNumber &&
         <button onClick={(() => {
             setPortionNumber(portionNumber + 1)
-        })}>NEXT</button>
+            // < i
+            // // className = "fas fa-angle-right" > < /i>
+        })}><FontAwesomeIcon icon={faAngleRight}/></button>
+        }
+        {portionCount > portionNumber &&
+        <button onClick={(() => {
+            setPortionNumber(portionCount)
+        })}><FontAwesomeIcon icon={faAngleDoubleRight}/></button>
         }
 
 

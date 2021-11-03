@@ -11,10 +11,11 @@ const Users = (props) => {
                    currentPage={props.currentPage}
                    pageSize={props.pageSize}
                    onPageChanged={props.onPageChanged}
+                   pageSize={props.pageSize}
             // portionSize={props.portionSize}
 
         />
-        <div>
+        <div className={s.users}>
             {
 
                 props.users.map(u => <User key={u.id}
