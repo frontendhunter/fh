@@ -2,6 +2,8 @@ import React from "react";
 import s from './Users.module.css';
 import defaultImage from '../../assets/images/defaultProfileImage.png';
 import {NavLink} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faAngleDoubleLeft, faUserTie} from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -10,9 +12,10 @@ const User = ({user,followingInProgress,follow,unfollow}) => {
     const checkLength = (text)=>{
         if(!text){
             return 'Статус'
-        }else if (text.length < 20){
+        }else if (text.length < 100){
             return text
-        }else{let textSm = text.slice(0,19) + '...'
+        }else{
+            let textSm = text.slice(0,99) + '...'
             return textSm
 
         }
@@ -20,8 +23,10 @@ const User = ({user,followingInProgress,follow,unfollow}) => {
 
     return <div className={s.userContainer}>
         <div className={s.image_wrap}>
-            <NavLink to={`/Profile/${user.id}`}>
-                <img src={user.photos.small === null ? defaultImage : user.photos.small}/>
+            <NavLink to={`/Profile/${user.id}`} >
+                {user.photos.large === null ?  <FontAwesomeIcon className={s.userIcon} icon={faUserTie}/> :  <img src={ user.photos.large}/>}
+
+
             </NavLink>
 
         </div>

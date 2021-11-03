@@ -3,10 +3,36 @@
     font-size: 1.2em;
     text-align: center;
 }
-.currentPage{
-    color: crimson;
-    font-weight: bolder ;
-}
+
 .pageNumber{
     margin: 0 0.15em;
+}
+.paginatorIcon{
+}
+button,.pageNumber{
+
+    font-size: 14px;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0;
+    border-radius: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    -webkit-appearance: none;
+    cursor: pointer;
+    height: 40px;
+    position: relative;padding: 0 12px;
+    font-family: inherit;
+    line-height: 38px;
+    color: #333;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+.currentPage{
+    color: #D6001C;
+    font-weight: bolder ;
 }

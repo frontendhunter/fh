@@ -23,12 +23,12 @@ const Paginator = (props) => {
         {portionNumber > 1 &&
         <button onClick={() => {
             setPortionNumber( 1)
-        }}><FontAwesomeIcon icon={faAngleDoubleLeft}/></button>
+        }}><FontAwesomeIcon className={s.paginatorIcon} icon={faAngleDoubleLeft}/></button>
         }
 {portionNumber > 1 &&
         <button onClick={() => {
             setPortionNumber(portionNumber - 1)
-        }}><FontAwesomeIcon icon={faAngleLeft}/></button>
+        }}><FontAwesomeIcon className={s.paginatorIcon}  icon={faAngleLeft}/></button>
         }
 
         {pages
@@ -53,12 +53,12 @@ const Paginator = (props) => {
             setPortionNumber(portionNumber + 1)
             // < i
             // // className = "fas fa-angle-right" > < /i>
-        })}><FontAwesomeIcon icon={faAngleRight}/></button>
+        })}><FontAwesomeIcon className={s.paginatorIcon}  icon={faAngleRight}/></button>
         }
         {portionCount > portionNumber &&
         <button onClick={(() => {
             setPortionNumber(portionCount)
-        })}><FontAwesomeIcon icon={faAngleDoubleRight}/></button>
+        })}><FontAwesomeIcon className={s.paginatorIcon}  icon={faAngleDoubleRight}/></button>
         }
 
 

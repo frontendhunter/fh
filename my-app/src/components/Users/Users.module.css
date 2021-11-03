@@ -1,42 +1,53 @@
 .all{
-    padding: 25px 20px;
+    padding: 30px 20px;
     display: flex;
     justify-content: center;
     flex-direction: column;
 
 }
+.userIcon{
+    font-size: 5em;
+    padding: 1em;
+    color: #212122;
+}
 .users{
+    padding: 20px 0;
     display: flex;
     flex-wrap: wrap;
     max-width: 100%;
 }
 .userContainer{
-    width: 46%;
+    width: 31%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    margin:  10px;
+    margin:  10px 7px;
     border-radius: 5px;
-    background-color: rgba(255,173,135,0.5);
+    background-color: rgba(33,33,34,0.1);
     justify-content: center;
     align-items: center;
-    padding: 25px;
+    padding-bottom: 15px;
+    text-align: center;
 }
 .image_wrap{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 100%;
+    height: auto;
 }
 .name{
     font-weight: bolder;
-    color: crimson;
     font-size: 1.5em;
+    color: #212122;
+    word-break: break-all;
 
 }
 .discription{
-
+margin: 10px 0;
+    word-break: break-all;
 }
 .discription span{
     display: block;
@@ -49,7 +60,6 @@
     width: 50%;
     background-color: rgba(220,20,60,0.9);
     font-size: 15px;
-    padding: 0.15em;
     border-radius: 5px;
     color: white;
     border: none;
@@ -61,5 +71,5 @@
 }
 
 .userContainer button:disabled{
-    background-color: lightslategray;
+    background-color: #212122;
 }
