@@ -7,30 +7,36 @@ import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 import s from '../../common/FormsControls.module.css'
 
-let maxLength20 = maxLengthCreator(20)
+let maxLength50 = maxLengthCreator(50)
 
 const LoginForm = ({error, handleSubmit, captchaUrl}) => {
 
     return (
-    <form onSubmit={handleSubmit}>
-        {captchaUrl && <img src={captchaUrl}/>}
-        {captchaUrl && <Field validate={[required, maxLength20]} placeholder='captcha' name={'captcha'} component={Input}/>}
-        <div>
-            <Field validate={[required, maxLength20]} placeholder='Email' name={'email'} component={Input}/>
+    <form className={s.formWrapper} onSubmit={handleSubmit}>
+        <div className={s.formCentre}>
+
+            <h2>Войдите в свой аккаунт</h2>
+            {captchaUrl && <img src={captchaUrl}/>}
+            {captchaUrl && <Field validate={[required, maxLength50]} placeholder='captcha' name={'captcha'} component={Input}/>}
+            <div>
+                <Field validate={[required, maxLength50]} placeholder='Email' name={'email'} component={Input}/>
+            </div>
+            <div>
+                <Field validate={[required, maxLength50]} placeholder="password" type='password' name={'password'}
+                       component={Input}/>
+            </div>
+            <div className={s.rememberMe__container}>
+                <Field className={s.rememberMe } type="checkbox" name={'rememberMe'} component={Input}/>  запомнить меня
+            </div>
+            {
+                error && <div className={s.formSummaryError}>{error}</div>
+            }
+            <div>
+                <button>Продолжить</button>
+            </div>
         </div>
-        <div>
-            <Field validate={[required, maxLength20]} placeholder="password" type='password' name={'password'}
-                   component={Input}/>
-        </div>
-        <div>
-            <Field type="checkbox" name={'rememberMe'} component={Input}/>
-        </div>
-        {
-            error && <div className={s.formSummaryError}>{error}</div>
-        }
-        <div>
-            <button>Login</button>
-        </div>
+
+        <div className={s.imageBlock}><img src="	https://i.hh.ru/css/globals/account/blocks/login/applicant__min_.svg?v=040521" alt="Заполните форму"/></div>
     </form>
 )
 }
@@ -43,7 +49,6 @@ const Login = (props) => {
         return <Redirect to={'/profile'}/>
     }
     return <div>
-        <h1>Login</h1>
         <LoginReduxForm captchaUrl={props.captchaUrl} onSubmit={onSubmit}/>
     </div>
 }

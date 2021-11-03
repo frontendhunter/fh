@@ -1,3 +1,7 @@
+.hiden{
+
+   display: none;
+}
 .header {
    background-color: #212122;
    display: flex;
@@ -70,40 +74,44 @@ position: relative;
    color: rgba(255,255,255,0.7);
 }
 
+.profile{
+   padding:  0 20px ;
+   line-height: 1;
+   box-shadow: 0 0 5px #212122;
+   border-radius: 5px;
+}
 
 .profile:hover{
    position: absolute;
-   top: -20px;
+   top: -8px;
    background-color:  #212122;
-   left: -78px;
-   padding: 10px 25px 0;
-   border-radius: 5px;
-   box-shadow: 0 0 5px #212122;
+   right: 0;
+
 }
 .profile:hover span{
    display: block;
-   margin-bottom: 10px;
+   margin: 0 0 10px;
    border-bottom: 1px  solid white;
    padding-bottom: 1em;
    text-align: center;
    transition: 0.3s;
 }
-.profile span:hover{
-color:rgba(255,255,255,1)
-}
-.profile:hover  .loginButton{
+.profile:hover span:last-child{
+   margin: 0 0  1px;
    border-bottom:none;
+}
+.profile span:hover,
+.loginButton:hover{
+color:rgba(255,255,255,1)
 }
 .nickname{
    text-decoration: none;
    cursor: pointer;
-   margin: 10px 0;
    color: inherit;
 }
 .loginButton{
-   display: none;
    background-color: transparent;
-   color: rgba(255,255,255,0.7);
+   color: rgba(255,255,255,0.9);
    cursor: pointer;
    font-size: inherit;
    text-decoration: none;

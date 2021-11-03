@@ -1,18 +1,110 @@
-.formControl{
+
+.formWrapper {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 3px;
+    box-shadow: 0 6px 16px rgba(0 ,0 ,0 , 0.2);
+    padding: 20px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    max-width: 480px;
+    margin: 100px auto;
+}
+
+.formWrapper h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    line-height: 1.16;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+
+    color: #333;
+}
+
+.formWrapper input {
+    font-size: 14px;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    margin: 0;
+    border-radius: 0;
+    border: 1px solid #ccc;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #fff;
+    line-height: 38px;
+    margin: 12px 0 0;
+}
+.rememberMe__container{
+    display: flex;
+    align-items: center;
+}
+.rememberMe__container div{
+    display: inline-block;
+}
+
+.rememberMe__container input {
+    display: inline-block;
+    height: 20px;
+    width: 20px; line-height: inherit;
+    margin-right: 8px ;
+}
+
+.formControl {
 
 }
+
 .formControl.error input,
-.formControl.error textarea
-{
-    border:2px solid red;
+.formControl.error textarea {
+    border: 2px solid red;
 }
-.formControl.error span{
+
+.formControl.error span {
     color: red;
 }
-.formSummaryError{
+
+.formSummaryError {
     border: 2px solid red;
     padding: 5px;
-    color:red;
+    color: red;
     display: inline-block;
+
+}
+
+.formWrapper button{
+    font-size: 14px;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0;
+    border-radius: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    -webkit-appearance: none;
+    cursor: pointer;
+    height: 40px;
+    position: relative;
+    padding: 0 12px;
+    font-family: inherit;
+    line-height: 38px;
+    color: #333;
+    border: 1px solid #ccc;
+
+    font-size: 14px;
+
+    line-height: 38px;
+    color: #fff;
+    border-color: #1e88e5;
+    background-color: #1e88e5;
+    margin-top: 8px;
+}
+
+.imageBlock {
 
 }

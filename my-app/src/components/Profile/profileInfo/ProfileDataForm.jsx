@@ -30,7 +30,7 @@ const ProfileDataForm = ({profile, handleSubmit,error}) => {
         </div>
         <div>
             {/*<b>Ищу работу:</b> {profile.lookingForAJob ? 'Да!' : 'Нет'}*/}
-            <b>Ищу работу</b>
+            <b>Ищу работу:</b>
             <Field validate={[required]} type='checkBox' name={'lookingForAJob'} component={Input}/>
 
         </div>

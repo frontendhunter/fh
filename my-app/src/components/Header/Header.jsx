@@ -3,7 +3,7 @@ import s from './Header.module.css'
 import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
-    const [dropDown,changeDropDown]=useState(false);
+    const [dropDown, changeDropDown] = useState(false);
 
     return (
         <header className={s.header}>
@@ -11,7 +11,8 @@ const Header = (props) => {
                 <div className={s.helper_wrapper}>
                     <div className={s.left}>
                         {/*<h2 className={s.logo__txt}>  <span>FH</span> </h2>*/}
-                        <NavLink to="/profile" className={s.logo__txt} activeClassName={s.active}><span>FH</span></NavLink>
+                        <NavLink to="/profile" className={s.logo__txt}
+                                 activeClassName={s.active}><span>FH</span></NavLink>
                         <nav className={s.nav}>
                             <NavLink to="/profile" className={s.item} activeClassName={s.active}>Моё резюме</NavLink>
                             {/*<NavLink to="/dialogs" className={s.item} activeClassName={s.active}>Сообщения</NavLink>*/}
@@ -20,15 +21,15 @@ const Header = (props) => {
                     </div>
 
 
-
                     <div className={s.login}>
                         {props.isAuth
                             ? <div className={s.profile}>
-                                <span >{props.login}</span>
-                                <span className={s.linkWrap}><NavLink to="/profile" className={s.nickname}>Профиль</NavLink></span>
-                                <span className={s.loginButton} onClick={props.logout}>Выйти</span>
-                        </div>
-                            : <div><NavLink className={s.loginButton} to={'/login'}>Войти</NavLink></div>}
+                                <span>{props.login}</span>
+                                <span className={s.linkWrap}><NavLink to="/profile"
+                                                                      className={s.nickname}>Профиль</NavLink></span>
+                                <span className={s.loginButton+' ' + s.hiden} onClick={props.logout}>Выйти</span>
+                              </div>
+                            : <span><NavLink className={s.loginButton} to={'/login'}>Войти</NavLink></span>}
 
                     </div>
                 </div>

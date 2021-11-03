@@ -33,7 +33,7 @@ const ProfileStatusWithHooks  = (props) => {
         //     </div>
         // }
         if (!editMode){
-            return <span onDoubleClick={()=>setEditMode(true)} >  { status||' write somebody'} </span>
+            return <span onDoubleClick={()=>setEditMode(true)} >  { status||'Изменить статус'} </span>
 
         } else if(editMode){
             return <div>
@@ -51,7 +51,7 @@ const ProfileStatusWithHooks  = (props) => {
         {props.isOwner
             ? showPersonalStatus()
             :
-                <span>  { status||' write somebody'} </span>
+                <span>  { status||'Изменить статус'} </span>
 
          }
         </b>
