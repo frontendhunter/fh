@@ -12,32 +12,39 @@ let maxLength50 = maxLengthCreator(50)
 const LoginForm = ({error, handleSubmit, captchaUrl}) => {
 
     return (
-    <form className={s.formWrapper} onSubmit={handleSubmit}>
-        <div className={s.formCentre}>
+        <div className={s.allFormWrapper}>
 
-            <h2>Войдите в свой аккаунт</h2>
-            {captchaUrl && <img src={captchaUrl}/>}
-            {captchaUrl && <Field validate={[required, maxLength50]} placeholder='captcha' name={'captcha'} component={Input}/>}
-            <div>
-                <Field validate={[required, maxLength50]} placeholder='Email' name={'email'} component={Input}/>
+            <div className={s.mainTitle}>
+                <h1>Найдите своего сотрудника с <b>FrontEndHunter</b></h1>
             </div>
-            <div>
-                <Field validate={[required, maxLength50]} placeholder="password" type='password' name={'password'}
-                       component={Input}/>
-            </div>
-            <div className={s.rememberMe__container}>
-                <Field className={s.rememberMe } type="checkbox" name={'rememberMe'} component={Input}/>  запомнить меня
-            </div>
-            {
-                error && <div className={s.formSummaryError}>{error}</div>
-            }
-            <div>
-                <button>Продолжить</button>
-            </div>
+
+            <form className={s.formWrapper} onSubmit={handleSubmit}>
+                <div className={s.formCentre}>
+
+                    <h2>Войдите в свой аккаунт</h2>
+                    {captchaUrl && <img src={captchaUrl}/>}
+                    {captchaUrl && <Field validate={[required, maxLength50]} placeholder='captcha' name={'captcha'} component={Input}/>}
+                    <div>
+                        <Field validate={[required, maxLength50]} placeholder='Email' name={'email'} component={Input}/>
+                    </div>
+                    <div>
+                        <Field validate={[required, maxLength50]} placeholder="password" type='password' name={'password'}
+                               component={Input}/>
+                    </div>
+                    <div className={s.rememberMe__container}>
+                        <Field className={s.rememberMe } type="checkbox" name={'rememberMe'} component={Input}/>  запомнить меня
+                    </div>
+                    {
+                        error && <div className={s.formSummaryError}>{error}</div>
+                    }
+                    <div>
+                        <button>Продолжить</button>
+                    </div>
+                </div>
+
+                <div className={s.imageBlock}><img src="	https://i.hh.ru/css/globals/account/blocks/login/applicant__min_.svg?v=040521" alt="Заполните форму"/></div>
+            </form>
         </div>
-
-        <div className={s.imageBlock}><img src="	https://i.hh.ru/css/globals/account/blocks/login/applicant__min_.svg?v=040521" alt="Заполните форму"/></div>
-    </form>
 )
 }
 const Login = (props) => {

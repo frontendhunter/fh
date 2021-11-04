@@ -1,4 +1,11 @@
-
+.mainTitle{
+    text-align: center;
+    color: #212122;
+    margin: 90px auto 50px;
+}
+.mainTitle b{
+    color: #D6001C;
+}
 .formWrapper {
     display: flex;
     justify-content: space-between;
@@ -8,7 +15,7 @@
     margin-bottom: 30px;
     box-sizing: border-box;
     max-width: 480px;
-    margin: 100px auto;
+    margin: 0 auto;
 }
 
 .formWrapper h2 {
@@ -107,4 +114,18 @@
 
 .imageBlock {
 
+}
+
+@media (max-width: 479px){
+    .allFormWrapper{
+        padding: 0 7px;
+    }
+    .mainTitle{
+        margin: 60px auto 35px;
+        font-size: 0.7em;
+    }
+   .formWrapper h2{
+        font-size: 1.1em;
+    }
+     
 }

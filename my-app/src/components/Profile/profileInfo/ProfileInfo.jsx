@@ -66,17 +66,17 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
         <div className={s.discriptionsWrap}>
             <div><h3 className={s.subHeaders}>Описание:</h3> {profile.aboutMe}</div>
 
-            <div>{isOwner && <button className={s.links__md + ' ' + s.profileData__changes}
+             {isOwner && <button className={s.links__md + ' ' + s.profileData__changes}
                                      onClick={goToEditMode}>Редактировать</button>}
-            </div>
+
         </div>
         <div>
             <h3 className={s.subHeaders}>Ищу работу:</h3> {profile.lookingForAJob ? 'Да!' : 'Нет'}
         </div>
-        <p>
+        <div>
             <h3 className={s.subHeaders}>Ключевые навыки: </h3>
             {profile.lookingForAJobDescription}
-        </p>
+        </div>
         <div>
             <h3 className={s.subHeaders}>contacts:</h3>
             <div className={s.profileLinks}>{Object.keys(contacts).map(el => <div key={el}>{el}: <a

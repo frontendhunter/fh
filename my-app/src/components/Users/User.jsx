@@ -12,10 +12,10 @@ const User = ({user,followingInProgress,follow,unfollow}) => {
     const checkLength = (text)=>{
         if(!text){
             return 'Статус'
-        }else if (text.length < 100){
+        }else if (text.length < 61){
             return text
         }else{
-            let textSm = text.slice(0,99) + '...'
+            let textSm = text.slice(0,60) + '...'
             return textSm
 
         }
