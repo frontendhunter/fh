@@ -31,7 +31,7 @@ const User = ({user,followingInProgress,follow,unfollow}) => {
 
         </div>
         <div className={s.discription}>
-            <span className={s.name}>{user.name}</span>
+            <NavLink to={`/Profile/${user.id}`} className={s.name}>{user.name} </NavLink>
             <span>{ checkLength(user.status )}</span>
         </div>
         {user.followed ?

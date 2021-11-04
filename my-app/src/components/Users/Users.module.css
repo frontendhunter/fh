@@ -7,7 +7,7 @@
 }
 .userIcon{
     font-size: 5em;
-    padding: 1em;
+    padding: 84px 0 0.8em;
     color: #212122;
 }
 .users{
@@ -43,6 +43,7 @@
     font-size: 1.5em;
     color: #212122;
     word-break: break-all;
+    text-decoration: none;
 
 }
 .discription{
@@ -72,4 +73,41 @@ margin: 10px 0;
 
 .userContainer button:disabled{
     background-color: #212122;
+}
+
+@media (max-width: 767px) {
+    .userContainer{
+        width: 46%;
+
+    }
+    .userIcon{
+        font-size: 5em;
+        padding: 1.6em 0 1.2em;
+        color: #212122;
+    }
+}
+@media (max-width: 479px){
+    .all{
+        padding: 30px 5px;
+    }
+    .userIcon{
+        font-size: 5em;
+        padding: 52px 0 0.5em;
+        color: #212122;
+    }
+    .userContainer{
+        margin: 10px 5px;
+    }
+    .name{
+        font-size: 1.1em;
+    }
+    .discription span{
+        font-size: 0.8em;
+    }
+    .userContainer button{
+        width: auto;
+    }
+    .users{
+        justify-content: center;
+    }
 }

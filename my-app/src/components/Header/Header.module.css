@@ -79,6 +79,7 @@ position: relative;
    line-height: 1;
    box-shadow: 0 0 5px #212122;
    border-radius: 5px;
+   z-index: 1;
 }
 
 .profile:hover{
@@ -118,4 +119,19 @@ color:rgba(255,255,255,1)
    border: none;
    text-align: left;
 
+}
+@media (max-width: 479px) {
+   .header{
+
+      padding: 8px;
+   }
+   .logo__txt{
+      margin: 0 8px 0 0;
+   }
+   .item{
+      margin-right: 5px;
+   }
+   .item:first-child{
+      display: none;
+   }
 }
