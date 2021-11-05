@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import Sidebar from './components/Sidebar/Sidebar';
-import {BrowserRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
+import {BrowserRouter, HashRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {connect, Provider} from "react-redux";
@@ -70,11 +70,11 @@ const AppContainer = compose(
 )(App);
 
 const SamuraiJSApp = (props) => {
-    return <BrowserRouter>
+    return <HashRouter >
         <Provider store={store}>
             <AppContainer/>
         </Provider>
-    </BrowserRouter>
+    </HashRouter>
 }
 
 export default SamuraiJSApp;
