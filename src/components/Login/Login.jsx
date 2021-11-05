@@ -21,7 +21,7 @@ const LoginForm = ({error, handleSubmit, captchaUrl}) => {
             <form className={s.formWrapper} onSubmit={handleSubmit}>
                 <div className={s.formCentre}>
 
-                    <h2>Войдите в свой аккаунт</h2>
+                    <h2>Войдите в аккаунт</h2>
                     {captchaUrl && <img src={captchaUrl}/>}
                     {captchaUrl && <Field validate={[required, maxLength50]} placeholder='captcha' name={'captcha'} component={Input}/>}
                     <div>
