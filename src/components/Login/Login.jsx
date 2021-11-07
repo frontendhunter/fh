@@ -15,7 +15,7 @@ const LoginForm = ({error, handleSubmit, captchaUrl}) => {
         <div className={s.allFormWrapper}>
 
             <div className={s.mainTitle}>
-                <h1>Найдите сотрудников с <b>FrontEndHunter</b></h1>
+                <h1>Найдите сотрудников с <b>FrontEndHunter!</b></h1>
             </div>
 
             <form className={s.formWrapper} onSubmit={handleSubmit}>
