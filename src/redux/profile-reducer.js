@@ -50,6 +50,7 @@ export const setUserStatusAC = (status) => ({type: SET_USER_STATUS, status});
 export const savePhotoSucces = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos});
 
 export const getProfile = (userId) => async (dispatch) => {
+
     let response = await usersAPI.getProfile(userId);
     dispatch(setUserProfile(response.data));
 }
