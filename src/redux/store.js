@@ -9,12 +9,12 @@ let store = {
                 {id: 1, name: 'Erjan', img: 'https://memepedia.ru/wp-content/uploads/2019/03/erzhan-768x569.jpg'},
                 {
                     id: 2,
-                    name: 'BrushGirl',
+                    name: ' Girl',
                     img: 'https://ru-minecraft.ru/uploads/posts/2018-02/1519154980_mad-villagers.png'
                 },
                 {
                     id: 3,
-                    name: 'uRina',
+                    name: ' Rina',
                     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTirEEXAcgdftxMTICIHgtrNo9qBZhlLuUVlg&usqp=CAU'
                 },
                 {
@@ -26,7 +26,7 @@ let store = {
             messages: [
                 {
                     id: 1,
-                    name: 'BrushGirl',
+                    name: ' Girl',
                     img: 'https://ru-minecraft.ru/uploads/posts/2018-02/1519154980_mad-villagers.png',
                     message: 'hello'
                 },
@@ -46,7 +46,7 @@ let store = {
                 },
                 {
                     id: 4,
-                    name: 'BrushGirl',
+                    name: ' Girl',
                     img: 'https://ru-minecraft.ru/uploads/posts/2018-02/1519154980_mad-villagers.png',
                     message: 'popa pisia popa pisia popa pisia'
                 }

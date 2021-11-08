@@ -1,6 +1,7 @@
 .dialogs__wrap{
  display: grid;
     grid-template-columns: 2fr 10fr;
+    background-color: rgba(0,0,0,0.1);
 
 }
 .dialog__item{

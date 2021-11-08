@@ -1,8 +1,12 @@
-const ADD_MESSAGE = 'dialogs/ADD-MESSAGE';
+const ADD_MESSAGE  = 'dialogs/ADD-MESSAGE';
 
 let initialState = {
     dialogs: [
-        {id: 1, name: 'Yury', img: 'https://memepedia.ru/wp-content/uploads/2019/03/erzhan-768x569.jpg'},
+        {
+            id: 1,
+            name: 'Yury',
+            img: 'https://memepedia.ru/wp-content/uploads/2019/03/erzhan-768x569.jpg'
+        },
         {
             id: 2,
             name: 'another girl',
@@ -49,7 +53,7 @@ let initialState = {
     ],
 };
 
-const dialogsReducer = (state = initialState, action) => {
+const dialogsReducer = (state = initialState, action:any) => {
     switch (action.type) {
         case ADD_MESSAGE:
 
@@ -69,7 +73,7 @@ const dialogsReducer = (state = initialState, action) => {
     }
 }
 
-export const addMessageActionCreator = (newMessageBody) => ({type: ADD_MESSAGE, newMessageBody});
+export const addMessageActionCreator = (newMessageBody:string) => ({type: ADD_MESSAGE, newMessageBody});
 
 
 export default dialogsReducer;
