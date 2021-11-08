@@ -126,7 +126,7 @@ color:rgba(255,255,255,1)
 .profileInfo img{
    width: 30px;
    height: 30px;
-   margin-left: 8px;
+   margin-left: 16px;
 }
 @media (max-width: 479px) {
    .header{

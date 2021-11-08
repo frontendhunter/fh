@@ -12,8 +12,8 @@ let initialState = {
             img: 'https://media.professionali.ru/processor/topics/size5/2017/03/21/brodude-ru-8-06-2015-f2ecjf7krnt7z.jpg'
         },
     ]}
-
-const sidebarReducer = (state = initialState, action)=>{
+    type InitialStateType = typeof initialState
+const sidebarReducer = (state = initialState, action:any):InitialStateType=>{
     switch (action.type) {
         default: return state;
     }
