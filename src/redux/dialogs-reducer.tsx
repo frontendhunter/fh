@@ -1,6 +1,22 @@
-const ADD_MESSAGE  = 'dialogs/ADD-MESSAGE';
+const ADD_MESSAGE = 'dialogs/ADD-MESSAGE';
 
-let initialState = {
+type DialogsStateType = {
+    dialogs: Array<DialogItemType>
+    messages: Array<MessageItemType>
+}
+type DialogItemType = {
+    id: number
+    name: string
+    img: string | null
+}
+type MessageItemType = {
+    id: number
+    name: string
+    img: string | null
+    message: string
+}
+
+let initialState: DialogsStateType = {
     dialogs: [
         {
             id: 1,
@@ -33,14 +49,12 @@ let initialState = {
         {
             id: 2,
             name: 'me',
-            class: 'textAlign: right;',
             img: 'https://pbs.twimg.com/profile_images/1412450786542379011/IY6aPa50.png',
             message: 'Hy'
         },
         {
             id: 3,
             name: 'another girl',
-            class: 'textAlign: right; ',
             img: 'https://ru-minecraft.ru/uploads/posts/2018-02/1519154980_mad-villagers.png',
             message: '  what are you doing '
         },
@@ -53,10 +67,9 @@ let initialState = {
     ],
 };
 
-const dialogsReducer = (state = initialState, action:any) => {
+const dialogsReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case ADD_MESSAGE:
-
             return {
                 ...state,
                 messages: [...state.messages, {
@@ -73,7 +86,7 @@ const dialogsReducer = (state = initialState, action:any) => {
     }
 }
 
-export const addMessageActionCreator = (newMessageBody:string) => ({type: ADD_MESSAGE, newMessageBody});
+export const addMessageActionCreator: object = (newMessageBody: string) => ({type: ADD_MESSAGE, newMessageBody});
 
 
 export default dialogsReducer;
