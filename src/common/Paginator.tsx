@@ -4,12 +4,20 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft, faAngleDoubleLeft, faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons';
 import cn from "classnames";
 
-const Paginator = (props) => {
+
+type Props ={
+    totalUsersCount:number,
+    pageSize:number,
+    onPageChanged:(pageNumber:number)=>void,
+    currentPage: number,
+}
+
+const Paginator:React.FC<Props> = (props ) => {
 
     let portionSize = 10;
 
     let pagesCount = Math.ceil(props.totalUsersCount /  props.pageSize);
-    let pages = [];
+    let pages:Array<number> = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
