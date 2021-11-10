@@ -2,13 +2,15 @@ import React from "react";
 import Header from "./Header";
 import {connect} from "react-redux";
 import {logout,} from "../../redux/auth-reducer";
-import {getProfile} from "../../redux/profile-reducer";
+import {getHeaderProfile } from "../../redux/profile-reducer";
 
 class HeaderContainer extends React.Component {
-    componentDidMount() {
+    refreshProfile(){
         const userId = this.props.authorizedUserId;
-        this.props.getProfile(userId)
-
+        this.props.getHeaderProfile(userId)
+    }
+    componentDidMount() {
+        this.refreshProfile()
     }
 
     render() {
@@ -24,7 +26,7 @@ class HeaderContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
-    profile: state.profilePage.profile,
+    profile: state.profilePage.headerProfile,
     isAuth: state.auth.isAuth,
     login: state.auth.login,
     authorizedUserId: state.auth.id
@@ -34,4 +36,4 @@ let mapStateToProps = (state) => ({
 
 
 
-export default connect(mapStateToProps, {getProfile, logout})(HeaderContainer)
+export default connect(mapStateToProps, {getHeaderProfile, logout})(HeaderContainer)

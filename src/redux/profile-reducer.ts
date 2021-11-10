@@ -5,6 +5,7 @@ import {PhotosType, PostType, ProfileType} from "../types/types";
 const ADD_POST = 'ADD-POST';
 const DELETE_POST = 'DELETE_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const SET_HEADER_PROFILE = 'SET_HEADER_PROFILE';
 const SET_USER_STATUS = 'SET_USER_STATUS';
 const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 
@@ -15,7 +16,8 @@ let initialState = {
         {id: 2, name: 'Isaac', message: 'smth clever text about life', likesCount: 39}
     ] as Array<PostType>,
     profile: null as ProfileType | null,
-    status: ''
+    status: '',
+    headerProfile: null as ProfileType | null,
 };
 export type InitialStateType = typeof initialState;
 const profileReducer = (state = initialState, action: any): InitialStateType => {
@@ -31,6 +33,9 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile};
         }
+        case SET_HEADER_PROFILE: {
+            return {...state, headerProfile: action.headerProfile};
+        }
         case SET_USER_STATUS: {
             return {...state, status: action.status};
         }
@@ -38,7 +43,7 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
             return {...state, profile: {...state.profile, photos: action.photos} as ProfileType};
         }
         case DELETE_POST: {
-            return {...state, posts: state.posts.filter((p) => p.id != action.postId)}
+            return {...state, posts: state.posts.filter((p) => p.id !== action.postId)}
         }
         default:
             return state;
@@ -62,6 +67,11 @@ type SetUserProfileType = {
     profile: ProfileType
 }
 export const setUserProfile = (profile: ProfileType): SetUserProfileType => ({type: SET_USER_PROFILE, profile});
+type SetHeaderProfileType = {
+    type: typeof SET_HEADER_PROFILE,
+    headerProfile: ProfileType
+}
+export const setHeaderProfile = (headerProfile: ProfileType): SetHeaderProfileType => ({type: SET_HEADER_PROFILE, headerProfile});
 type SetUserStatusACType = {
     type: typeof SET_USER_STATUS,
     status: string
@@ -78,6 +88,14 @@ export const getProfile = (userId: number) => async (dispatch: any) => {
     let response = await usersAPI.getProfile(userId);
     dispatch(setUserProfile(response.data));
 }
+
+export const getHeaderProfile = (userId: number) => async (dispatch: any) => {
+
+    let response = await usersAPI.getProfile(userId);
+    dispatch(setHeaderProfile(response.data));
+}
+
+
 export const getUserStatus = (userId: number) => async (dispatch: any) => {
     let response = await profileAPI.getStatus(userId)
     dispatch(setUserStatusAC(response.data));

@@ -1,9 +1,6 @@
 const ADD_MESSAGE = 'dialogs/ADD-MESSAGE';
 
-export type InitialStateType = {
-    dialogs: Array<DialogItemType>
-    messages: Array<MessageItemType>
-}
+
 export type DialogItemType = {
     id: number
     name: string
@@ -16,7 +13,10 @@ export type MessageItemType = {
     message: string
 }
 
-let initialState: InitialStateType  = {
+
+export type InitialStateType  = typeof initialState;
+
+let initialState = {
     dialogs: [
         {
             id: 1,
