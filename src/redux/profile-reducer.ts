@@ -1,6 +1,11 @@
 import {profileAPI, usersAPI} from "../ api/api";
-import {stopSubmit} from "redux-form";
+import {FormErrors, stopSubmit} from "redux-form";
 import {PhotosType, PostType, ProfileType} from "../types/types";
+import {AppStateType} from "./redux-store";
+import {Dispatch} from "redux";
+import {ThunkAction} from "redux-thunk";
+import {FormAction} from "redux-form/lib/actions";
+import {type} from "os";
 
 const ADD_POST = 'ADD-POST';
 const DELETE_POST = 'DELETE_POST';
@@ -20,7 +25,7 @@ let initialState = {
     headerProfile: null as ProfileType | null,
 };
 export type InitialStateType = typeof initialState;
-const profileReducer = (state = initialState, action: any): InitialStateType => {
+const profileReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
 
     switch (action.type) {
         case ADD_POST: {
@@ -51,6 +56,13 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
     }
 }
 
+type ActionsTypes =
+    AddPostActionCreatorType
+    | DeletePostType
+    | SetUserProfileType
+    | SetHeaderProfileType
+    | SetUserStatusACType
+    | SavePhotoSuccesType
 
 type AddPostActionCreatorType = {
     type: typeof ADD_POST,
@@ -71,7 +83,10 @@ type SetHeaderProfileType = {
     type: typeof SET_HEADER_PROFILE,
     headerProfile: ProfileType
 }
-export const setHeaderProfile = (headerProfile: ProfileType): SetHeaderProfileType => ({type: SET_HEADER_PROFILE, headerProfile});
+export const setHeaderProfile = (headerProfile: ProfileType): SetHeaderProfileType => ({
+    type: SET_HEADER_PROFILE,
+    headerProfile
+});
 type SetUserStatusACType = {
     type: typeof SET_USER_STATUS,
     status: string
@@ -83,43 +98,54 @@ type SavePhotoSuccesType = {
 }
 export const savePhotoSucces = (photos: PhotosType): SavePhotoSuccesType => ({type: SAVE_PHOTO_SUCCESS, photos});
 
-export const getProfile = (userId: number) => async (dispatch: any) => {
+
+//-------------------------thunk----------------------------------------
+
+
+type GetStateType = () => AppStateType
+type DispatchType = Dispatch<ActionsTypes>
+type ThunkType = ThunkAction<Promise<void>, GetStateType,  unknown, ActionsTypes>
+
+
+export const getProfile = (userId: number): ThunkType => async (dispatch ) => {
 
     let response = await usersAPI.getProfile(userId);
     dispatch(setUserProfile(response.data));
 }
 
-export const getHeaderProfile = (userId: number) => async (dispatch: any) => {
+export const getHeaderProfile = (userId: number): ThunkType => async (dispatch ) => {
 
     let response = await usersAPI.getProfile(userId);
     dispatch(setHeaderProfile(response.data));
 }
 
 
-export const getUserStatus = (userId: number) => async (dispatch: any) => {
+export const getUserStatus = (userId: number): ThunkType => async (dispatch ) => {
     let response = await profileAPI.getStatus(userId)
     dispatch(setUserStatusAC(response.data));
 }
-export const updateUserStatus = (status: string) => async (dispatch: any) => {
+export const updateUserStatus = (status: string): ThunkType => async (dispatch ) => {
     let response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === 0) {
         dispatch(setUserStatusAC(status));
     }
 }
-export const savePhoto = (file: any) => async (dispatch: any) => {
+export const savePhoto = (file: any): ThunkType => async (dispatch ) => {
     let response = await profileAPI.savePhoto(file)
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSucces(response.data.data.photos));
     }
 }
 
-export const saveProfile = (profile: ProfileType) => async (dispatch: any, getState: any) => {
+//---------------------ANYTYPE----------------------
+
+export const saveProfile = (profile: ProfileType):ThunkType => async (dispatch:any, getState: any) => {
     const userId = getState().auth.id
     const response = await profileAPI.saveProfile(profile)
     if (response.data.resultCode === 0) {
-        dispatch(getProfile(userId));
+        await dispatch(getProfile(userId));
     } else {
-        dispatch(stopSubmit('editProfile', {_error: response.data.messages[0]}))
+        dispatch(stopSubmit('editProfile', {_error: response.data.messages[0]})  )
         return Promise.reject(response.data.messages[0])
     }
 }
