@@ -2,21 +2,24 @@ import React from "react"
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogsItem";
 import Message from "./Message/Message";
-import {Field, reduxForm, values} from "redux-form";
+import {Field, reduxForm } from "redux-form";
 import {Textarea} from "../../common/FormsControls";
 import {maxLengthCreator, required} from "../../utils/validators/validators";
+import {PropsType} from "./DialogsContainer";
 
-const Dialogs = (props) => {
+
+
+const Dialogs:React.FC<PropsType> = (props) => {
 
     let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem key={d.id} id={d.id} name={d.name}
                                                                          img={d.img}/>)
 
-    let messagesElements = props.dialogsPage.messages.map(m => <Message key={m.id} class={m.class} message={m.message}
+    let messagesElements = props.dialogsPage.messages.map(m => <Message key={m.id} message={m.message}
                                                                         name={m.name}
                                                                         img={m.img}/>)
 
 
-    let addNewMessage = (values) => {
+    let addNewMessage = (values:any) => {
         props.addMessage(values.newMessageBody)
     }
 
@@ -37,7 +40,7 @@ const Dialogs = (props) => {
 
 const maxLength50 = maxLengthCreator(50);
 
-const MessageForm = (props) => {
+const MessageForm = (props:any) => {
     return <form onSubmit={props.handleSubmit}>
         <Field validate={[required,maxLength50]} component={Textarea}  name={'newMessageBody'} placeholder={'Enter your message'}></Field>
         <div>

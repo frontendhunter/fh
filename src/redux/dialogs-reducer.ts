@@ -89,7 +89,7 @@ type addMessageActionCreatorType = {
     type: typeof ADD_MESSAGE,
     newMessageBody: string
 }
-export const addMessageActionCreator = (newMessageBody:string):addMessageActionCreatorType => ({type: ADD_MESSAGE, newMessageBody});
+export const addMessage = (newMessageBody:string):addMessageActionCreatorType => ({type: ADD_MESSAGE, newMessageBody});
 
 
 export default dialogsReducer;
