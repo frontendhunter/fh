@@ -87,7 +87,7 @@ export const checkAuth = ():ThunkType => async (dispatch: any) => {
     }
 }
 
-export const login = (email: string, password: string, rememberMe: boolean, captcha: any):ThunkType => async (dispatch: any) => {
+export const login = (email: string, password: string, rememberMe: boolean, captcha: string):ThunkType => async (dispatch: any) => {
 
     let loginData = await authAPI.login(email, password, rememberMe, captcha)
     if (loginData.resultCode === ResultCodeEnum.Success) {
