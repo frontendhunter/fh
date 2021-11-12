@@ -1,4 +1,4 @@
-import {authAPI, securityAPI} from "../ api/api";
+import {authAPI, ResultCodeEnum, ResultCodeForCaptcha, securityAPI} from "../ api/api";
 import {stopSubmit} from "redux-form";
 import {AppStateType} from "./redux-store";
 import {Dispatch} from "redux";
@@ -80,23 +80,23 @@ type DispatchType = Dispatch<ActionsTypes>
 type ThunkType = ThunkAction<Promise<void>, GetStateType, unknown, ActionsTypes>
 
 export const checkAuth = ():ThunkType => async (dispatch: any) => {
-    let response = await authAPI.checkAuth()
-    if (response.data.resultCode === 0) {
-        let {id, email, login} = response.data.data
+    let authData = await authAPI.checkAuth()
+    if (authData.resultCode === ResultCodeEnum.Success) {
+        let {id, email, login} = authData.data
         dispatch(setAuthUserData(id, email, login, true));
     }
 }
 
 export const login = (email: string, password: string, rememberMe: boolean, captcha: any):ThunkType => async (dispatch: any) => {
 
-    let response = await authAPI.login({email, password, rememberMe, captcha})
-    if (response.data.resultCode === 0) {
+    let loginData = await authAPI.login(email, password, rememberMe, captcha)
+    if (loginData.resultCode === ResultCodeEnum.Success) {
         dispatch(checkAuth())
     } else {
-        if (response.data.resultCode === 10) {
+        if (loginData.resultCode === ResultCodeForCaptcha.CaptchaIsRequired) {
             dispatch(getCaptchaUrl())
         }
-        let errMessage = (response.data.messages === 0) ? 'Something wrong' : response.data.messages;
+        let errMessage = (loginData.messages.length > 0) ? loginData.messages : 'Something wrong' ;
         dispatch(stopSubmit('Login', {_error: errMessage}));
 
 
