@@ -78,7 +78,7 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
             {profile.lookingForAJobDescription}
         </div>
         <div>
-            <h3 className={s.subHeaders}>contacts:</h3>
+            <h3 className={s.subHeaders}>Контакты:</h3>
             <div className={s.profileLinks}>{Object.keys(contacts).map(el => <div key={el}>{el}: <a
                 className={s.links__md} target="_blank" href={contacts[el]}>{contacts[el]}</a></div>)}</div>
         </div>

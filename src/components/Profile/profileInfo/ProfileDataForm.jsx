@@ -31,7 +31,7 @@ const ProfileDataForm = ({profile, handleSubmit,error}) => {
         <div>
             {/*<b>Ищу работу:</b> {profile.lookingForAJob ? 'Да!' : 'Нет'}*/}
             <b>Ищу работу:</b>
-            <Field validate={[required]} type='checkBox' name={'lookingForAJob'} component={Input}/>
+            <Field validate={[ ]} type='checkBox' name={'lookingForAJob'} component={Input}/>
 
         </div>
         <p>
@@ -42,11 +42,11 @@ const ProfileDataForm = ({profile, handleSubmit,error}) => {
         </p>
         <div>
             <b>Контакты:</b>
-            <p className={s.profileLinks}>{Object.keys(contacts).map(el => <div key={el}><span className={s.labelInput}>{el}:</span> <Field className={s.fields} validate={[maxLength100]}
+            <div className={s.profileLinks}>{Object.keys(contacts).map(el => <div key={el}><span className={s.labelInput}>{el}:</span> <Field className={s.fields} validate={[maxLength100]}
                                                                                              placeholder={el}
                                                                                              name={'contacts.' + el}
                                                                                              component={Input}/>
-            </div>)}</p>
+            </div>)}</div>
         </div>
         <div>
 

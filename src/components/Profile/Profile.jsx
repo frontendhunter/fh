@@ -16,7 +16,7 @@ const Profile = (props) => {
                          saveProfile={props.saveProfile}
 
             />
-            {/*<MyPostsContainer store={props.store}/>*/}
+            <MyPostsContainer store={props.store}/>
         </main>
     )
 }
