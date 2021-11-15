@@ -1,4 +1,4 @@
-import profileReducer, {actions} from "./profile-reducer";
+import profileReducer, {addPostActionCreator, deletePost} from "./profile-reducer";
 import {ProfileType} from "../types/types";
 
 
@@ -16,7 +16,7 @@ let state = {
 
 it('right length of posts', () => {
     //1. test data
-    let action = actions.addPostActionCreator('Hard work does not guarantee results or success. But if a person does not work hard, he is destined to fail.')
+    let action =  addPostActionCreator('Hard work does not guarantee results or success. But if a person does not work hard, he is destined to fail.')
 
     // 2. action
     let newState = profileReducer(state, action)
@@ -27,7 +27,7 @@ it('right length of posts', () => {
 
 it('right message post', () => {
     //1. test data
-    let action = actions.addPostActionCreator('Hard work does not guarantee results or success. But if a person does not work hard, he is destined to fail.')
+    let action =  addPostActionCreator('Hard work does not guarantee results or success. But if a person does not work hard, he is destined to fail.')
 
     // 2. action
     let newState = profileReducer(state, action)
@@ -37,7 +37,7 @@ it('right message post', () => {
 
 it('right post delete', () => {
     //1. test data
-    let action =  actions.deletePost(1);
+    let action =   deletePost(1);
 
     // 2. action
     let newState = profileReducer(state, action)
@@ -47,7 +47,7 @@ it('right post delete', () => {
 
 it('post shouldnt bbe deleted if id is incorrect', () => {
     //1. test data
-    let action =  actions.deletePost(1000);
+    let action =   deletePost(1000);
 
     // 2. action
     let newState = profileReducer(state, action)
