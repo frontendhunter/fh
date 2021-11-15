@@ -2,8 +2,21 @@ import React, {useState} from "react"
 import s from './Header.module.css'
 import {NavLink} from "react-router-dom";
 import defPhoto from "../../assets/images/defaultProfileImage.png";
+import {ProfileType} from "../../types/types";
 
-const Header = ({profile, isAuth,login,logout}) => {
+
+
+export type PropsType = {
+    isAuth: boolean
+    profile: ProfileType | null
+    login: string | null
+    logout: ()=> void
+    authorizedUserId:number | null
+    getHeaderProfile: (usrId:number )=> void
+}
+
+
+const Header:React.FC<PropsType> = ({profile, isAuth,login,logout}) => {
     if (!profile) {
         return  <header className={s.header}>
 

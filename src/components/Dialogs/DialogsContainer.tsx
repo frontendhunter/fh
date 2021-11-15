@@ -12,9 +12,7 @@ type MapStateType = {
 type MapDispatchType = {
     addMessage: (newMessageBody:string) => void
 }
-type OwnPropsType = {
-
-}
+type OwnPropsType =  InitialStateType
 
 export type PropsType =  MapStateType & MapDispatchType & OwnPropsType
 const DialogsContainer:React.FC<PropsType> = (props) => {
@@ -27,7 +25,7 @@ const mapStateToProps = (state: AppStateType): MapStateType => {
     }
 };
 
-export default compose(
+export default compose<React.ComponentType>(
     connect<MapStateType,MapDispatchType,OwnPropsType, AppStateType>(mapStateToProps, {addMessage:actions.addMessage}),
     WithAuthRedirect
 )(DialogsContainer);

@@ -9,13 +9,13 @@ export type PhotosType = {
     large: string | null,
 }
 export type ContactsType = {
-    github: string | null,
-    mainLink: string | null,
-    youtube: string | null,
-    instagram: string | null,
-    twitter: string | null,
-    vk: string | null,
-    website: string | null,
+    github: string | undefined,
+    mainLink: string | undefined,
+    youtube: string | undefined,
+    instagram: string | undefined,
+    twitter: string | undefined,
+    vk: string | undefined,
+    website: string | undefined,
 }
 export type ProfileType = {
     userId: number,
@@ -24,6 +24,7 @@ export type ProfileType = {
     lookingForAJobDescription: string,
     contacts: ContactsType,
     photos: PhotosType,
+    aboutMe: string
 }
 export type UserType={
     id:number,

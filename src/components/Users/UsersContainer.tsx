@@ -83,7 +83,7 @@ let mapStateToProps = (state:AppStateType):MapStatePropsType => {
 }
 
 
-export default compose(
+export default compose<React.ComponentType>(
     //<TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = DefaultState>
     connect<MapStatePropsType,MapDispatchPropsType,OwnPropsType,AppStateType>(mapStateToProps, {
         follow,

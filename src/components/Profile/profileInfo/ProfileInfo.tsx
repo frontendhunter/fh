@@ -1,11 +1,23 @@
-import React, {useState} from "react"
+import React, {ChangeEvent, useState} from "react"
 import s from './ProfileInfo.module.css'
 import Preloader from "../../../common/Preloader";
 import defPhoto from "../../../assets/images/defaultProfileImage.png"
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import ProfileDataForm from "./ProfileDataForm";
+import {ContactsType, ProfileType} from "../../../types/types";
 
-const ProfileInfo = ({profile, status, updateUserStatus, isOwner, savePhoto, saveProfile}) => {
+type PropsType = {
+    profile:ProfileType | null
+
+    status:string
+    updateUserStatus:(status:string)=> void
+    isOwner:boolean
+    saveProfile:(profile:ProfileType)=>Promise<any>
+    savePhoto: (file:File)=> void
+}
+
+
+const ProfileInfo:React.FC<PropsType> = ({profile, status, updateUserStatus, isOwner, savePhoto, saveProfile}) => {
 
     let [editMode, setEditMode] = useState(false);
 
@@ -14,13 +26,13 @@ const ProfileInfo = ({profile, status, updateUserStatus, isOwner, savePhoto, sav
     }
     let contacts = profile.contacts;
 
-    let onMainPhotoSelected = (e) => {
-        if (e.target.files.length) {
+    let onMainPhotoSelected = (e:ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files?.length) {
             savePhoto(e.target.files[0])
         }
     }
 
-    let onSubmit = (formData) => {
+    let onSubmit = (formData:ProfileType) => {
         saveProfile(formData)
             .then(() => {
                 setEditMode(false);
@@ -57,7 +69,14 @@ const ProfileInfo = ({profile, status, updateUserStatus, isOwner, savePhoto, sav
         </div>
     )
 }
-const ProfileData = ({profile, isOwner, goToEditMode}) => {
+
+type ProfileDataPropsType = {
+    profile:ProfileType
+    isOwner:boolean
+    goToEditMode: () => void
+}
+
+const ProfileData:React.FC<ProfileDataPropsType> = ({profile, isOwner, goToEditMode}) => {
 
     let contacts = profile.contacts;
 
@@ -79,8 +98,11 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
         </div>
         <div>
             <h3 className={s.subHeaders}>Контакты:</h3>
-            <div className={s.profileLinks}>{Object.keys(contacts).map(el => <div key={el}>{el}: <a
-                className={s.links__md} target="_blank" href={contacts[el]}>{contacts[el]}</a></div>)}</div>
+            <div className={s.profileLinks}>{Object
+                .keys(contacts)
+                .map(el => <div key={el}>{el}: <a
+                className={s.links__md} target="_blank" href={contacts[el as keyof ContactsType]}>{contacts[el as keyof ContactsType]}</a>
+                </div>)}</div>
         </div>
     </div>
 }

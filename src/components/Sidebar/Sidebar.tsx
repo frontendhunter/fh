@@ -2,7 +2,7 @@ import React from "react"
 import s from './Sidebar.module.css'
 import {NavLink} from "react-router-dom";
 
-const Sidebar = (props) => {
+const Sidebar:React.FC = (props) => {
     // let state  = props.store.getState();
 
     return (

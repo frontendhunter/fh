@@ -25,6 +25,7 @@ let initialState = {
     profile: null as ProfileType | null,
     status: '',
     headerProfile: null as ProfileType | null,
+    newPostText:''
 };
 export type InitialStateType = typeof initialState;
 const profileReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
